@@ -19,9 +19,9 @@ import javax.swing.JTextField;
 public class MyCalendar extends javax.swing.JPanel implements MouseListener {
 
     private JLabel[] dias;
-    private int mes, anio;
+    private int elMes, elAnio, mesActual, anioActual;
     private final String[] nombresMeses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
-                "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};;
+                "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
     private final JDialog marco;
     private final JTextField campoFecha;
     
@@ -33,8 +33,11 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
         dias = new JLabel[42];
         
         GregorianCalendar calendario = new GregorianCalendar();
-        mes = calendario.get(Calendar.MONTH); //obtenemos el mes actual
-        anio = calendario.get(Calendar.YEAR); //obtenemos el anio actual
+        elMes = calendario.get(Calendar.MONTH); //obtenemos el mes actual
+        elAnio = calendario.get(Calendar.YEAR); //obtenemos el anio actual
+        
+        mesActual = calendario.get(Calendar.MONTH);
+        anioActual = calendario.get(Calendar.YEAR);
         
         crearEtiquetasDia();
         
@@ -207,20 +210,34 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBtnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnBackMouseClicked
+        int anio = elAnio;
+        int mes = elMes;
         mes --;
+        
         if (mes < 0) {
             mes = 11;
             anio --;
         }
+        
+        if (anio < anioActual) {
+            return;
+        }
+        if (anio == anioActual && mes < mesActual) {
+             return;
+        }
+        
+        elAnio = anio;
+        elMes = mes;
+        
         rehacerEtiquetasDia();
         llenarCuerpo();
     }//GEN-LAST:event_lblBtnBackMouseClicked
 
     private void lblBtnForwardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnForwardMouseClicked
-        mes ++;
-        if (mes > 11) {
-            mes = 0;
-            anio ++;
+        elMes ++;
+        if (elMes > 11) {
+            elMes = 0;
+            elAnio ++;
         }
         rehacerEtiquetasDia();
         llenarCuerpo();
@@ -228,14 +245,10 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
 
     private void crearEtiquetasDia() {
         for (int i = 0; i < dias.length; i++) {
-            JLabel dia = new JLabel();
-            dia.setHorizontalAlignment(JLabel.CENTER);
+            JLabel lblDia = new JLabel();
+            lblDia.setHorizontalAlignment(JLabel.CENTER);
             
-            //dia.setOpaque(true);
-            //dia.setBackground(Color.WHITE);
-            //HoverEffect hover = new HoverEffect(dia,new Color(214, 234, 248 ));
-            //dia.addMouseListener(hover);
-            dias[i] = dia;
+            dias[i] = lblDia;
         }
     }
     
@@ -254,11 +267,11 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
         
         //datos del mes y el anio
         
-        lblMesAnio.setText(nombresMeses[mes]+" "+anio);
+        lblMesAnio.setText(nombresMeses[elMes]+" "+elAnio);
         
         bodyPanel.setLayout(new GridLayout(6,7,0,0));
         
-        GregorianCalendar calendario = new GregorianCalendar(anio,mes,1);
+        GregorianCalendar calendario = new GregorianCalendar(elAnio,elMes,1);
         
         int diaIniEnLaSemana = calendario.get(Calendar.DAY_OF_WEEK);
         int numDia = 1;
@@ -300,7 +313,7 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
         String sMes;
         String sDia;
         int numDia = Integer.parseInt(dia.getText());
-        int nMes = mes+1;
+        int nMes = elMes+1;
         if (nMes < 10) {
             sMes = "0";
         }
@@ -317,7 +330,7 @@ public class MyCalendar extends javax.swing.JPanel implements MouseListener {
         sMes = sMes + nMes;
         sDia = sDia + dia.getText();
         
-        fecha = anio+"-"+sMes+"-"+sDia;
+        fecha = elAnio+"-"+sMes+"-"+sDia;
         
         this.campoFecha.setText(fecha);
         

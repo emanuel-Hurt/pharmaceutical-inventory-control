@@ -14,7 +14,7 @@ public class InitialWindow extends javax.swing.JFrame {
     public InitialWindow() {       
         
         initComponents();
-        
+        this.lblBtnCloseSesion.setToolTipText("Cerrar Sesión");
         //putHoverEffectSideButtons();
     }
     
@@ -54,6 +54,8 @@ public class InitialWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
         lblUser = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lblBtnCloseSesion = new javax.swing.JLabel();
         sidePanel = new javax.swing.JPanel();
         btnBuys = new javax.swing.JLabel();
         btnProducts = new javax.swing.JLabel();
@@ -69,20 +71,24 @@ public class InitialWindow extends javax.swing.JFrame {
 
         majorPanel.setLayout(new java.awt.BorderLayout());
 
-        headPanel.setBackground(new java.awt.Color(169, 208, 134));
+        headPanel.setBackground(new java.awt.Color(244, 244, 244));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nombreFarmacia.png"))); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(17, 18, 123));
         jLabel4.setOpaque(true);
 
         lblDate.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(241, 242, 247));
+        lblDate.setForeground(new java.awt.Color(74, 74, 74));
         lblDate.setText("08:39 Viernes 1 de Marzo");
 
         lblUser.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(241, 242, 247));
+        lblUser.setForeground(new java.awt.Color(74, 74, 74));
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUser.setText("ADMINISTRADOR");
+
+        jSeparator1.setForeground(new java.awt.Color(244, 244, 244));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(217, 217, 217)));
+
+        lblBtnCloseSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit-icon.png"))); // NOI18N
 
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
@@ -91,36 +97,42 @@ public class InitialWindow extends javax.swing.JFrame {
             .addGroup(headPanelLayout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1))
                     .addGroup(headPanelLayout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(lblDate)
-                        .addGap(0, 641, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 308, Short.MAX_VALUE)
                         .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblBtnCloseSesion)
+                        .addContainerGap())))
         );
         headPanelLayout.setVerticalGroup(
             headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(headPanelLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(lblDate)
-                .addGap(7, 7, 7)
-                .addComponent(lblUser)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBtnCloseSesion)
+                    .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDate)
+                        .addComponent(lblUser)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         majorPanel.add(headPanel, java.awt.BorderLayout.PAGE_START);
 
-        sidePanel.setBackground(new java.awt.Color(18, 19, 130));
+        sidePanel.setBackground(new java.awt.Color(17, 18, 123));
+        sidePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 0, 0, 0, new java.awt.Color(17, 18, 123)));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnBuys.setBackground(new java.awt.Color(18, 19, 130));
         btnBuys.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnBuys.setForeground(new java.awt.Color(169, 208, 134));
+        btnBuys.setForeground(new java.awt.Color(234, 234, 234));
         btnBuys.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBuys.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconAdd.png"))); // NOI18N
         btnBuys.setText("Agregar Producto");
         btnBuys.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         btnBuys.setIconTextGap(15);
@@ -129,9 +141,8 @@ public class InitialWindow extends javax.swing.JFrame {
 
         btnProducts.setBackground(new java.awt.Color(18, 19, 130));
         btnProducts.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnProducts.setForeground(new java.awt.Color(169, 208, 134));
+        btnProducts.setForeground(new java.awt.Color(234, 234, 234));
         btnProducts.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProducts.png"))); // NOI18N
         btnProducts.setText("Productos");
         btnProducts.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         btnProducts.setIconTextGap(15);
@@ -140,9 +151,8 @@ public class InitialWindow extends javax.swing.JFrame {
 
         btnNewSale.setBackground(new java.awt.Color(18, 19, 130));
         btnNewSale.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnNewSale.setForeground(new java.awt.Color(169, 208, 134));
+        btnNewSale.setForeground(new java.awt.Color(234, 234, 234));
         btnNewSale.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconSale.png"))); // NOI18N
         btnNewSale.setText("Realizar Venta");
         btnNewSale.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         btnNewSale.setIconTextGap(15);
@@ -151,9 +161,8 @@ public class InitialWindow extends javax.swing.JFrame {
 
         btnControlPanel.setBackground(new java.awt.Color(18, 19, 130));
         btnControlPanel.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnControlPanel.setForeground(new java.awt.Color(169, 208, 134));
+        btnControlPanel.setForeground(new java.awt.Color(234, 234, 234));
         btnControlPanel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnControlPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconCentro.png"))); // NOI18N
         btnControlPanel.setText("Panel de Control");
         btnControlPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         btnControlPanel.setIconTextGap(15);
@@ -162,9 +171,8 @@ public class InitialWindow extends javax.swing.JFrame {
 
         lblBtnProviders.setBackground(new java.awt.Color(18, 19, 130));
         lblBtnProviders.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnProviders.setForeground(new java.awt.Color(169, 208, 134));
+        lblBtnProviders.setForeground(new java.awt.Color(234, 234, 234));
         lblBtnProviders.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBtnProviders.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProvider.png"))); // NOI18N
         lblBtnProviders.setText("Proveedores");
         lblBtnProviders.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         lblBtnProviders.setIconTextGap(15);
@@ -173,31 +181,28 @@ public class InitialWindow extends javax.swing.JFrame {
 
         lblBtnSettings.setBackground(new java.awt.Color(18, 19, 130));
         lblBtnSettings.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnSettings.setForeground(new java.awt.Color(169, 208, 134));
+        lblBtnSettings.setForeground(new java.awt.Color(234, 234, 234));
         lblBtnSettings.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBtnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconSettings.png"))); // NOI18N
         lblBtnSettings.setText("Configuraciones");
         lblBtnSettings.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         lblBtnSettings.setIconTextGap(15);
         lblBtnSettings.setOpaque(true);
-        sidePanel.add(lblBtnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 180, -1));
+        sidePanel.add(lblBtnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 180, 30));
 
         lblBtnInputProducts.setBackground(new java.awt.Color(18, 19, 130));
         lblBtnInputProducts.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnInputProducts.setForeground(new java.awt.Color(169, 208, 134));
+        lblBtnInputProducts.setForeground(new java.awt.Color(234, 234, 234));
         lblBtnInputProducts.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBtnInputProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconArowR.png"))); // NOI18N
         lblBtnInputProducts.setText("Entradas de Producto");
         lblBtnInputProducts.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         lblBtnInputProducts.setIconTextGap(15);
         lblBtnInputProducts.setOpaque(true);
-        sidePanel.add(lblBtnInputProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, -1));
+        sidePanel.add(lblBtnInputProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, 30));
 
         lblBtnSalesHistory.setBackground(new java.awt.Color(18, 19, 130));
         lblBtnSalesHistory.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnSalesHistory.setForeground(new java.awt.Color(169, 208, 134));
+        lblBtnSalesHistory.setForeground(new java.awt.Color(234, 234, 234));
         lblBtnSalesHistory.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblBtnSalesHistory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconArowL.png"))); // NOI18N
         lblBtnSalesHistory.setText("Salidas de Producto");
         lblBtnSalesHistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
         lblBtnSalesHistory.setIconTextGap(15);
@@ -210,11 +215,11 @@ public class InitialWindow extends javax.swing.JFrame {
         centerPanel.setLayout(centerPanelLayout);
         centerPanelLayout.setHorizontalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGap(0, 979, Short.MAX_VALUE)
         );
         centerPanelLayout.setVerticalGroup(
             centerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         majorPanel.add(centerPanel, java.awt.BorderLayout.CENTER);
@@ -270,6 +275,10 @@ public class InitialWindow extends javax.swing.JFrame {
     public JLabel getLblUser() {
         return lblUser;
     }
+    
+    public JLabel getLblBtnCloseSesion() {
+        return this.lblBtnCloseSesion;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnBuys;
@@ -279,6 +288,8 @@ public class InitialWindow extends javax.swing.JFrame {
     private javax.swing.JPanel centerPanel;
     private javax.swing.JPanel headPanel;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblBtnCloseSesion;
     private javax.swing.JLabel lblBtnInputProducts;
     private javax.swing.JLabel lblBtnProviders;
     private javax.swing.JLabel lblBtnSalesHistory;

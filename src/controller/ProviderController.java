@@ -3,13 +3,18 @@ package controller;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import model.Provider;
 import model.daos.ProviderDAO;
 import view.ErrorModal;
 import view.ProvidersRegisterPanel;
+import view.QuestionModal;
 import view.SuccessModal;
 
 /**
@@ -21,33 +26,83 @@ public class ProviderController extends MouseAdapter {
     private final ProviderDAO providerDAO;
     private ProvidersRegisterPanel providersPanel;
     private JTable tableProviders;
+    private HashSet<Integer> editedRows;
+    private ArrayList<Provider> providersList;
     
     public ProviderController(ProviderDAO provDAO) {
         providerDAO = provDAO;
+        this.editedRows = new HashSet<>();
+        this.providersList = (ArrayList<Provider>)providerDAO.providersList();
     }
     
     public void setProvidersRegisterPanel(ProvidersRegisterPanel panel) {
         providersPanel = panel;
+        //REGISTRAR NUEVOS PROVEEDORES
         providersPanel.getLblBtnRegister().addMouseListener(this);
-        tableProviders = providersPanel.getTableProviders();
+        
+        //CONTROL Y CAPTURA DE LOS CAMBIOS EN LA TABLA
+        tableProviders = providersPanel.getProvidersTable();
+        DefaultTableModel tableModel = (DefaultTableModel)this.tableProviders.getModel();
+        tableModel.addTableModelListener(e -> {
+            if (e.getType() == TableModelEvent.UPDATE) {
+                int nRow = e.getFirstRow();
+                String strPhone = (String)tableModel.getValueAt(nRow, 3);
+                String email = (String)tableModel.getValueAt(nRow, 2);
+                if ((strPhone.matches("\\d+") || strPhone.isEmpty()) && (email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$") || email.isEmpty())) {
+                    //ES VALIDO
+                    String nameProvider = (String)tableModel.getValueAt(nRow, 1);
+                   
+                    int phone = Integer.parseInt(strPhone);
+
+                    Provider provider = providersList.get(nRow);
+                    provider.setName(nameProvider);
+                    provider.setEmail(email);
+                    provider.setPhone(phone);
+
+                    providerDAO.updateProvider(provider);
+                                      
+                } else {
+                    ErrorModal modal = new ErrorModal("Email y/o número de telf/cel incorrecto");
+                }
+            }
+        });
+        
+        //ELIMINAR PROVEEDORES
+        providersPanel.getLblBtnDeleteProvider().addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int[] selectedRows = tableProviders.getSelectedRows();
+                if (selectedRows.length != 0) {
+                    Arrays.stream(selectedRows).forEach(rowIdx -> {
+                        providerDAO.deleteProvider(providersList.get(rowIdx));
+                        providersList.remove(rowIdx);
+                        updateProvidersTable();
+                    });
+                } else {
+                    ErrorModal modal = new ErrorModal("Debe seleccionar la(s) fila(s) que desea eliminar");
+                }
+            }
+        });
+        
         updateProvidersTable();
     }
     
     private void updateProvidersTable() {
-        //OBTENER PROVEEDORES
-        ArrayList<Provider> providersList = (ArrayList<Provider>)providerDAO.providersList();
         //VACIAR LA TABLA PREVIAMENTE
         DefaultTableModel modelTable = (DefaultTableModel)tableProviders.getModel();
         if (modelTable.getRowCount() > 0) {
             modelTable.setRowCount(0);
         }
-        //LLENAR LA TABLA CON LOS DATOS OBTENIDOS
+        //LLENAR LA TABLA CON LOS DATOS DE LA LISTA
+        int num = 1;
         for (Provider provider : providersList) {
 
-            String values[] = {provider.getIdProvider()+"",provider.getName(),
+            String values[] = {num+"",provider.getName(),
                                provider.getEmail(), provider.getPhone()+""};
             
-            modelTable.addRow(values);           
+            modelTable.addRow(values);
+            
+            num++;
         }
     }
     
@@ -71,6 +126,7 @@ public class ProviderController extends MouseAdapter {
                         }
                         
                         if (providerDAO.createProvider(provider)) {
+                            providersList.add(provider);
                             SuccessModal successModal = new SuccessModal("Registro Realizado Exitosamente");
                             clearFields();
                             updateProvidersTable();

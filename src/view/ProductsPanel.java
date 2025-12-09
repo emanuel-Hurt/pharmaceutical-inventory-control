@@ -38,7 +38,7 @@ public class ProductsPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTable = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(241, 242, 247));
+        setBackground(new java.awt.Color(244, 244, 244));
         setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -81,9 +81,9 @@ public class ProductsPanel extends javax.swing.JPanel {
         lblBtnExport.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBtnExport.setForeground(new java.awt.Color(51, 51, 51));
         lblBtnExport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconExport.png"))); // NOI18N
+        lblBtnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/export-icon.png"))); // NOI18N
         lblBtnExport.setText("Exportar");
-        lblBtnExport.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        lblBtnExport.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
         lblBtnExport.setOpaque(true);
 
         txtFieldNameProduct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -145,6 +145,7 @@ public class ProductsPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        productsTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(productsTable);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

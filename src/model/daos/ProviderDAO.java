@@ -126,7 +126,7 @@ public class ProviderDAO {
         return resp;
     }
     
-    public boolean updateProvider(Provider actualProvider) {
+    public boolean updateProvider(Provider updatedProvider) {
         
         boolean resp = false;
         
@@ -140,10 +140,10 @@ public class ProviderDAO {
             
             preparedStatement = connect.prepareStatement(query);
             
-            preparedStatement.setString(1, actualProvider.getName());
-            preparedStatement.setString(2, actualProvider.getEmail());
-            preparedStatement.setInt(3, actualProvider.getPhone());
-            preparedStatement.setInt(4, actualProvider.getIdProvider());
+            preparedStatement.setString(1, updatedProvider.getName());
+            preparedStatement.setString(2, updatedProvider.getEmail());
+            preparedStatement.setInt(3, updatedProvider.getPhone());
+            preparedStatement.setInt(4, updatedProvider.getIdProvider());
             
             int rows = preparedStatement.executeUpdate();
             

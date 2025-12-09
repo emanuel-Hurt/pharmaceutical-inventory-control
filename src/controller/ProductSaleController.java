@@ -1,6 +1,8 @@
 package controller;
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import java.util.Calendar;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.List;
 import model.Client;
 import model.Percentage;
 import model.SaleDetail;
@@ -83,9 +86,16 @@ public class ProductSaleController extends MouseAdapter {
         //CREACION DEL CONTROLADOR PARA EL PANEL QUE LISTA LAS VENTAS
         saleListController = new SaleListController(this.searchProductPanel.getProductsSaleListPanel(), this.searchProductPanel.getLblTotalAmount(), this);
         
-        //COLOCACION DE LOS ELEMENTOS DEL SearchProductPanel A LA ESCUCHA
+        //ELEMENTOS DEL SearchProductPanel A LA ESCUCHA
         searchProductPanel.getBtnSearch().addMouseListener(this);
         this.searchProductPanel.getlblBtnMakeSale().addMouseListener(this);
+        
+        this.searchProductPanel.getSearchField().addActionListener(e -> {
+            String searchedProduct = searchProductPanel.getSearchField().getText();
+            if (searchedProduct.length() != 0) {
+                showFoundProducts(searchedProduct);
+            }
+        });
         
         //LlENAR LA TABLA DEL SearchProductPanel CON LOS PRODUCTOS
         DefaultTableModel model = (DefaultTableModel)searchProductPanel.getTableProductsFound().getModel();
@@ -119,9 +129,9 @@ public class ProductSaleController extends MouseAdapter {
         //ESTE BLOQUE ES PARA ESCUCHAR LOS EVENTOS DE searchProductPanel
         if (searchProductPanel != null) {
             if(eventSource.equals(searchProductPanel.getBtnSearch())) {         
-                String nameProduct = searchProductPanel.getFieldBrowser().getText();
-                if (nameProduct.length() != 0) {
-                    showProductsFound(nameProduct);
+                String searchedProduct = searchProductPanel.getSearchField().getText();
+                if (searchedProduct.length() != 0) {
+                    showFoundProducts(searchedProduct);
                 }
             }
             
@@ -189,11 +199,21 @@ public class ProductSaleController extends MouseAdapter {
     }
     
     //MUESTRA EN LA TABLA LOS DATOS HALLADOS SEGUN EL NOMBREPRODUCTO
-    public void showProductsFound(String productName) {
+    public void showFoundProducts(String searchedProduct) {
         
         //OBTENCION DE LOS DATOS
-        ArrayList<Product> listFound = (ArrayList) productDAO.listByNameProduct(productName);
+        ArrayList<Product> listByName = (ArrayList) productDAO.listByNameProduct(searchedProduct);
         
+        ArrayList<Product> listByPharmaForm = (ArrayList) productDAO.listByPharmaForm(searchedProduct);
+        
+        if (!listByName.isEmpty()) {
+            fillSearchedTable(listByName);
+        } else if (!listByPharmaForm.isEmpty()) {
+            fillSearchedTable(listByPharmaForm);
+        }
+        
+    }
+    private void fillSearchedTable(List<Product> list) {
         DefaultTableModel modelTable = (DefaultTableModel)searchProductPanel.getTableProductsFound().getModel();
         //VACIAR LA TABLA SI CONTIENE DATOS
         if (modelTable.getRowCount() > 0) {
@@ -201,7 +221,7 @@ public class ProductSaleController extends MouseAdapter {
         }
         
         int count = 1;
-        for (Product product : listFound) {
+        for (Product product : list) {
             String row[] = {count+"",
                             product.getCodProduct(),
                             product.getNameProvider(),
@@ -217,7 +237,6 @@ public class ProductSaleController extends MouseAdapter {
             count++;
         }
     }
-    
     public double getTotalAmount() {
         return totalAmount;
     }

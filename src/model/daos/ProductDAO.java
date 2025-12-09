@@ -152,6 +152,81 @@ public class ProductDAO {
         return list;
     }
     
+    public List<Product> listByPharmaForm(String chars) {
+        List<Product> list = new ArrayList<>();
+        String query = "SELECT "
+                + "id_product, "
+                + "name_product, "
+                + "name_provider, "
+                + "pharma_form, "
+                + "concentration, "
+                + "price, "
+                + "existence, "
+                + "due_date, "
+                + "cod_product, "
+                + "num_lote, "
+                + "generic_name "
+                + "FROM products, providers "
+                + "WHERE pharma_form LIKE ? AND providers.id_provider=products.id_provider;";
+        
+        String param = chars + "%";
+        
+        Connection connect = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+            connect = DatabaseConnection.getConnection(fileConfig);
+            
+            preparedStatement = connect.prepareStatement(query);
+            
+            preparedStatement.setString(1, param);
+            
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                
+                Product product = new Product();
+                
+                product.setIdProduct(resultSet.getInt(1));
+                product.setNameProduct(resultSet.getString(2));
+                product.setNameProvider(resultSet.getString(3));
+                product.setPharmaForm(resultSet.getString(4));
+                product.setConcentration(resultSet.getString(5));
+                product.setPrice(resultSet.getDouble(6));
+                product.setExistence(resultSet.getInt(7));
+                product.setDueDate(resultSet.getDate(8));
+                product.setCodProduct(resultSet.getString(9));
+                product.setNumLote(resultSet.getString(10));
+                product.setGenericName(resultSet.getString(11));
+                
+                list.add(product);
+            }
+            
+        }
+        catch(SQLException ex) {
+        }
+        finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                }catch(SQLException ex) {}
+            }
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                }catch(SQLException ex) {}
+            }
+            if (connect != null) {
+                try {
+                    connect.close();
+                }catch(SQLException ex) {}
+            }
+        }
+        
+        return list;
+    }
+    
     private List<Product> toList(String query) {
         
         Connection connec = null;

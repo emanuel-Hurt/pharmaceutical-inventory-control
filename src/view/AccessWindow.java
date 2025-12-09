@@ -74,8 +74,9 @@ public class AccessWindow extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BIENVENIDO");
 
+        userField.setBackground(new java.awt.Color(255, 255, 255));
         userField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        userField.setForeground(new java.awt.Color(204, 204, 204));
+        userField.setForeground(new java.awt.Color(153, 153, 153));
         userField.setText("Usuario");
         userField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -86,7 +87,8 @@ public class AccessWindow extends javax.swing.JFrame {
             }
         });
 
-        passwordField.setForeground(new java.awt.Color(204, 204, 204));
+        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+        passwordField.setForeground(new java.awt.Color(153, 153, 153));
         passwordField.setText("Password");
         passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -152,7 +154,7 @@ public class AccessWindow extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(174, 214, 241));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("FARMACIA IRLANDA");
+        jLabel2.setText("SISTEMA DE CONTROL");
 
         javax.swing.GroupLayout majorPanelLayout = new javax.swing.GroupLayout(majorPanel);
         majorPanel.setLayout(majorPanelLayout);

@@ -48,7 +48,7 @@ public class ProductRestockPanel extends javax.swing.JPanel {
         fieldNameProduct = new javax.swing.JTextField();
         lblBtnSearch = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
+        setBackground(new java.awt.Color(244, 244, 244));
         setLayout(new java.awt.GridBagLayout());
 
         tableProducts.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
@@ -68,6 +68,7 @@ public class ProductRestockPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tableProducts.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableProducts);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

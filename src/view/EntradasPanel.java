@@ -40,7 +40,7 @@ public class EntradasPanel extends javax.swing.JPanel {
         tblPurchases = new javax.swing.JTable();
         lblBtnDelete = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
+        setBackground(new java.awt.Color(244, 244, 244));
         setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -70,6 +70,7 @@ public class EntradasPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblPurchases.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblPurchases);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

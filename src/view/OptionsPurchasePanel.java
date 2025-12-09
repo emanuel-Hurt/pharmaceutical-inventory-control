@@ -37,7 +37,7 @@ public class OptionsPurchasePanel extends javax.swing.JPanel {
         lblBtnRestock = new javax.swing.JLabel();
         lblBtnNewProduct = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
+        setBackground(new java.awt.Color(244, 244, 244));
         setLayout(new java.awt.GridBagLayout());
 
         lblBtnRestock.setBackground(new java.awt.Color(255, 255, 255));

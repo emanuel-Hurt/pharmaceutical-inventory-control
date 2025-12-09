@@ -156,7 +156,7 @@ public class UserDAO {
         return user;
     }
     
-    public boolean updateUser(User user, String username) {
+    public boolean updateUser(User user) {
         
         boolean resp = false;
         
@@ -170,7 +170,7 @@ public class UserDAO {
                 + "password=?, "
                 + "id_rol=?, "
                 + "username=? "
-                + "WHERE username=?;";
+                + "WHERE id_user=?;";
         
         Connection connect = null;
         PreparedStatement preparedStatement = null;
@@ -188,7 +188,7 @@ public class UserDAO {
             preparedStatement.setString(6, user.getPassword());
             preparedStatement.setInt(7, user.getIdRol());
             preparedStatement.setString(8, user.getUsername());
-            preparedStatement.setString(9, username);
+            preparedStatement.setInt(9, user.getIdUser());
             
             int rows = preparedStatement.executeUpdate();
             

@@ -72,6 +72,7 @@ public class TableDetailsModal extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblDetails.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblDetails);
 
         lblBtnOk.setBackground(new java.awt.Color(255, 255, 255));

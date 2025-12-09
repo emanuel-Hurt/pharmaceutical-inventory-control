@@ -39,25 +39,17 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         fieldPhone = new javax.swing.JTextField();
         lblBtnRegister = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableProviders = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ProvidersTable = new javax.swing.JTable();
+        lblBtnDeleteProvider = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(new java.awt.Color(244, 244, 244));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("REGISTRAR NUEVO PROVEEDOR");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(38, 13, 0, 0);
-        add(jLabel1, gridBagConstraints);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -83,6 +75,7 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 6, 0, 0);
         jPanel1.add(jLabel5, gridBagConstraints);
 
+        fieldNameProvider.setBackground(new java.awt.Color(255, 255, 255));
         fieldNameProvider.setColumns(25);
         fieldNameProvider.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fieldNameProvider.setForeground(new java.awt.Color(51, 51, 51));
@@ -107,6 +100,7 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(15, 42, 0, 0);
         jPanel1.add(jLabel3, gridBagConstraints);
 
+        fieldEmail.setBackground(new java.awt.Color(255, 255, 255));
         fieldEmail.setColumns(15);
         fieldEmail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fieldEmail.setForeground(new java.awt.Color(51, 51, 51));
@@ -130,6 +124,7 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(15, 29, 0, 0);
         jPanel1.add(jLabel4, gridBagConstraints);
 
+        fieldPhone.setBackground(new java.awt.Color(255, 255, 255));
         fieldPhone.setColumns(10);
         fieldPhone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fieldPhone.setForeground(new java.awt.Color(51, 51, 51));
@@ -147,7 +142,7 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         lblBtnRegister.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBtnRegister.setForeground(new java.awt.Color(255, 255, 255));
         lblBtnRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnRegister.setText("Registrar");
+        lblBtnRegister.setText("Guardar");
         lblBtnRegister.setOpaque(true);
         lblBtnRegister.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -167,21 +162,14 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(65, 32, 41, 0);
         jPanel1.add(lblBtnRegister, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 13;
-        gridBagConstraints.ipady = 35;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 13, 0, 0);
-        add(jPanel1, gridBagConstraints);
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel6.setText("LISTA DE PROVEEDORES");
 
-        tableProviders.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tableProviders.setModel(new javax.swing.table.DefaultTableModel(
+        ProvidersTable.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        ProvidersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -197,50 +185,65 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableProviders);
+        ProvidersTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ProvidersTable);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 373;
-        gridBagConstraints.ipady = 365;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(14, 14, 20, 0);
-        jPanel2.add(jScrollPane1, gridBagConstraints);
+        lblBtnDeleteProvider.setBackground(new java.awt.Color(204, 204, 204));
+        lblBtnDeleteProvider.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblBtnDeleteProvider.setForeground(new java.awt.Color(51, 51, 51));
+        lblBtnDeleteProvider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnDeleteProvider.setText("Eliminar");
+        lblBtnDeleteProvider.setOpaque(true);
+        lblBtnDeleteProvider.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBtnDeleteProviderMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBtnDeleteProviderMouseExited(evt);
+            }
+        });
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipady = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(16, 6, 0, 52);
-        add(jPanel2, gridBagConstraints);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 5;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.ipady = 507;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 23, 44, 0);
-        add(jSeparator1, gridBagConstraints);
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setText("LISTA DE PROVEEDORES");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(36, 6, 0, 0);
-        add(jLabel6, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(lblBtnDeleteProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBtnDeleteProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBtnRegisterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnRegisterMouseEntered
@@ -250,6 +253,16 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
     private void lblBtnRegisterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnRegisterMouseExited
         lblBtnRegister.setBackground(exitColor);
     }//GEN-LAST:event_lblBtnRegisterMouseExited
+
+    private void lblBtnDeleteProviderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnDeleteProviderMouseEntered
+        this.lblBtnDeleteProvider.setBackground(new Color(255,102,102));
+        this.lblBtnDeleteProvider.setForeground(Color.WHITE);
+    }//GEN-LAST:event_lblBtnDeleteProviderMouseEntered
+
+    private void lblBtnDeleteProviderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnDeleteProviderMouseExited
+        this.lblBtnDeleteProvider.setBackground(new Color(204,204,204));
+        this.lblBtnDeleteProvider.setForeground(new Color(102,102,102));
+    }//GEN-LAST:event_lblBtnDeleteProviderMouseExited
 
     public JTextField getFieldEmail() {
         return fieldEmail;
@@ -267,11 +280,16 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
         return lblBtnRegister;
     }   
 
-    public JTable getTableProviders() {
-        return tableProviders;
+    public JTable getProvidersTable() {
+        return ProvidersTable;
+    }
+    
+    public JLabel getLblBtnDeleteProvider() {
+        return lblBtnDeleteProvider;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable ProvidersTable;
     private javax.swing.JTextField fieldEmail;
     private javax.swing.JTextField fieldNameProvider;
     private javax.swing.JTextField fieldPhone;
@@ -282,10 +300,9 @@ public class ProvidersRegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblBtnDeleteProvider;
     private javax.swing.JLabel lblBtnRegister;
-    private javax.swing.JTable tableProviders;
     // End of variables declaration//GEN-END:variables
 }

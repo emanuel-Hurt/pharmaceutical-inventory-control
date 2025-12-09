@@ -1,5 +1,5 @@
 ip: localhost
-port: 8889
+port: 3306
 ddbb: ddbb_farma
 user: root
 password: root

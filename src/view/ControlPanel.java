@@ -45,8 +45,10 @@ public class ControlPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
+        btnProductsList = new javax.swing.JLabel();
+        btnBuys = new javax.swing.JLabel();
+        btnNewSale = new javax.swing.JLabel();
         salesTopPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMinimum = new javax.swing.JTable();
@@ -55,17 +57,68 @@ public class ControlPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProductsToExpire = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
-        btnBuys = new javax.swing.JLabel();
-        btnNewSale = new javax.swing.JLabel();
-        btnProductsList = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
-        setLayout(new java.awt.GridBagLayout());
+        setBackground(new java.awt.Color(244, 244, 244));
+
+        btnProductsList.setBackground(new java.awt.Color(244, 244, 244));
+        btnProductsList.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnProductsList.setForeground(new java.awt.Color(74, 74, 74));
+        btnProductsList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProductsList.png"))); // NOI18N
+        btnProductsList.setText("Productos");
+        btnProductsList.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(201, 201, 201)));
+        btnProductsList.setOpaque(true);
+        btnProductsList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnProductsListMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnProductsListMouseExited(evt);
+            }
+        });
+
+        btnBuys.setBackground(new java.awt.Color(244, 244, 244));
+        btnBuys.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        btnBuys.setForeground(new java.awt.Color(74, 74, 74));
+        btnBuys.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBuys.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProducto.png"))); // NOI18N
+        btnBuys.setText("Ingreso Producto");
+        btnBuys.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(201, 201, 201)));
+        btnBuys.setIconTextGap(10);
+        btnBuys.setOpaque(true);
+        btnBuys.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuysMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuysMouseExited(evt);
+            }
+        });
+
+        btnNewSale.setBackground(new java.awt.Color(244, 244, 244));
+        btnNewSale.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        btnNewSale.setForeground(new java.awt.Color(74, 74, 74));
+        btnNewSale.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconVender.png"))); // NOI18N
+        btnNewSale.setText("Nueva Venta");
+        btnNewSale.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(201, 201, 201)));
+        btnNewSale.setIconTextGap(15);
+        btnNewSale.setOpaque(true);
+        btnNewSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNewSaleMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNewSaleMouseExited(evt);
+            }
+        });
 
         salesTopPanel.setBackground(new java.awt.Color(255, 255, 255));
         salesTopPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
+        tblMinimum.setBackground(new java.awt.Color(244, 244, 244));
+        tblMinimum.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(244, 244, 244)));
         tblMinimum.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tblMinimum.setForeground(new java.awt.Color(74, 74, 74));
         tblMinimum.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -82,9 +135,12 @@ public class ControlPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblMinimum.setOpaque(false);
         jScrollPane1.setViewportView(tblMinimum);
 
+        jLabel5.setBackground(new java.awt.Color(244, 244, 244));
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(74, 74, 74));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("PRODUCTOS CON SALDO MÍNIMO");
         jLabel5.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 5, 1, new java.awt.Color(0, 204, 255)));
@@ -94,10 +150,10 @@ public class ControlPanel extends javax.swing.JPanel {
         salesTopPanel.setLayout(salesTopPanelLayout);
         salesTopPanelLayout.setHorizontalGroup(
             salesTopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(salesTopPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                 .addContainerGap())
         );
         salesTopPanelLayout.setVerticalGroup(
@@ -105,23 +161,16 @@ public class ControlPanel extends javax.swing.JPanel {
             .addGroup(salesTopPanelLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 197;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 20, 5, 0);
-        add(salesTopPanel, gridBagConstraints);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
 
+        tblProductsToExpire.setBackground(new java.awt.Color(244, 244, 244));
         tblProductsToExpire.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        tblProductsToExpire.setForeground(new java.awt.Color(74, 74, 74));
         tblProductsToExpire.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -140,7 +189,9 @@ public class ControlPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblProductsToExpire);
 
+        jLabel6.setBackground(new java.awt.Color(244, 244, 244));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(74, 74, 74));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("VENCIMIENTOS PRÓXIMOS");
         jLabel6.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 5, 1, new java.awt.Color(0, 204, 255)));
@@ -150,109 +201,55 @@ public class ControlPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.ipadx = 222;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(70, 37, 5, 39);
-        add(jPanel2, gridBagConstraints);
-
-        btnBuys.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuys.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        btnBuys.setForeground(new java.awt.Color(51, 51, 51));
-        btnBuys.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnBuys.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProducto.png"))); // NOI18N
-        btnBuys.setText("Ingreso Producto");
-        btnBuys.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-        btnBuys.setIconTextGap(10);
-        btnBuys.setOpaque(true);
-        btnBuys.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBuysMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBuysMouseExited(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 3;
-        gridBagConstraints.ipadx = 55;
-        gridBagConstraints.ipady = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(40, 60, 0, 0);
-        add(btnBuys, gridBagConstraints);
-
-        btnNewSale.setBackground(new java.awt.Color(255, 255, 255));
-        btnNewSale.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        btnNewSale.setForeground(new java.awt.Color(51, 51, 51));
-        btnNewSale.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnNewSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconVender.png"))); // NOI18N
-        btnNewSale.setText("Nueva Venta");
-        btnNewSale.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-        btnNewSale.setIconTextGap(15);
-        btnNewSale.setOpaque(true);
-        btnNewSale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNewSaleMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNewSaleMouseExited(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 59;
-        gridBagConstraints.ipady = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(38, 20, 0, 0);
-        add(btnNewSale, gridBagConstraints);
-
-        btnProductsList.setBackground(new java.awt.Color(255, 255, 255));
-        btnProductsList.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnProductsList.setForeground(new java.awt.Color(51, 51, 51));
-        btnProductsList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconProductsList.png"))); // NOI18N
-        btnProductsList.setText("Productos");
-        btnProductsList.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
-        btnProductsList.setOpaque(true);
-        btnProductsList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnProductsListMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnProductsListMouseExited(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 76;
-        gridBagConstraints.ipady = -2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(39, 49, 0, 0);
-        add(btnProductsList, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(salesTopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addComponent(btnBuys, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnNewSale, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnProductsList, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnNewSale, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                        .addComponent(btnBuys, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salesTopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 76, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewSaleMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewSaleMouseEntered
@@ -260,7 +257,7 @@ public class ControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNewSaleMouseEntered
 
     private void btnNewSaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewSaleMouseExited
-        btnNewSale.setBackground(Color.WHITE);
+        btnNewSale.setBackground(new Color(244,244,244));
     }//GEN-LAST:event_btnNewSaleMouseExited
 
     private void btnBuysMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuysMouseEntered
@@ -268,7 +265,7 @@ public class ControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuysMouseEntered
 
     private void btnBuysMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuysMouseExited
-        btnBuys.setBackground(Color.WHITE);
+        btnBuys.setBackground(new Color(244,244,244));
     }//GEN-LAST:event_btnBuysMouseExited
 
     private void btnProductsListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductsListMouseEntered
@@ -276,7 +273,7 @@ public class ControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnProductsListMouseEntered
 
     private void btnProductsListMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductsListMouseExited
-        btnProductsList.setBackground(Color.WHITE);
+        btnProductsList.setBackground(new Color(244,244,244));
     }//GEN-LAST:event_btnProductsListMouseExited
 
 

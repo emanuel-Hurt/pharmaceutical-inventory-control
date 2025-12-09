@@ -43,7 +43,8 @@ public class SettingsController extends MouseAdapter {
     private final ProductSaleDAO productSaleDAO;
     private final TimeNotificationDAO timeNotificationDAO;
     
-    private final HashSet<Integer> rowsEdited;
+    private ArrayList<User> users;
+    //private final HashSet<Integer> rowsEdited;
     
     public SettingsController(PercentageDAO percentageDAO, UserDAO userDAO, PasswordDAO passDAO, ProductSaleDAO prodSaleDAO, TimeNotificationDAO timeNotiDAO) {
         this.percentageDao = percentageDAO;
@@ -51,7 +52,8 @@ public class SettingsController extends MouseAdapter {
         this.passwordDAO = passDAO;
         this.productSaleDAO = prodSaleDAO;
         this.timeNotificationDAO = timeNotiDAO;
-        rowsEdited = new HashSet<>();
+
+        //rowsEdited = new HashSet<>();
     }
     
     public void setPercentagesPanel(PercentagesPanel panel) {
@@ -119,122 +121,72 @@ public class SettingsController extends MouseAdapter {
             public void tableChanged(TableModelEvent e) {
                 if (e.getType() == TableModelEvent.UPDATE) {
                     int row = e.getFirstRow();
-                    try {
-                        String nameUser = model.getValueAt(row, 0).toString();
+                    try {                      
+                        String userName = model.getValueAt(row, 0).toString();
                         String name = model.getValueAt(row, 1).toString();
                         String lastname = model.getValueAt(row, 2).toString();
                         String mLastname = model.getValueAt(row, 3).toString();
-                        if (!nameUser.equals("admin") && !name.equals("admin") && !lastname.equals("admin") && !mLastname.equals("admin")) {
-                            int celular = Integer.parseInt(model.getValueAt(row, 4).toString());
-                            rowsEdited.add(row);
-                        } else {
-                            window.showErrorMessage("nombre admin es de uso restringido. No se guardaran los cambios.");
+                        int phone = Integer.parseInt(model.getValueAt(row, 4).toString());
+                        String address = model.getValueAt(row, 5).toString();
+                        String pass = model.getValueAt(row, 6).toString();
+                        String hashed = BCrypt.hashpw(pass, BCrypt.gensalt(12));                                             
+                        
+                        User user = users.get(row); //obtendo los datos iniciales del usuario
+                        
+                        if (!users.get(row).getName().equals("admin")) {
+                            int idRol = 2;
+
+                            //user.setIdUser(users.get(row).getIdUser());
+                            user.setUsername(userName);
+                            user.setName(name);
+                            user.setLastName(lastname);
+                            user.setmLastName(mLastname);
+                            user.setCellPhone(phone);
+                            user.setAddress(address);
+                            
+                            user.setIdRol(idRol); 
                         }
+                                              
+                        user.setPassword(hashed);
+                        userDAO.updateUser(user);
+                        
+                        Password password = new Password();
+                        password.setIdUser(user.getIdUser());
+                        password.setThePassword(pass);
+                        passwordDAO.updatePassword(password);
                         
                     }catch(NumberFormatException ex) {
-                        rowsEdited.remove(row);
+                        //rowsEdited.remove(row);
                         window.showErrorMessage("Número cel/telf inválido");
                     }
                 }
             }
         });
-        //CONTROL DEL BOTON GUARDAR CAMBIOS
-        window.getLblBtnSaveChanges().addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (!rowsEdited.isEmpty()) {
-                    boolean resp = true;
-                    
-                    String username, name, lastName, mLastName, newUsername, address, pass;
-                    int numPhone, idRol;
-                    
-                    for (Integer row : rowsEdited) {
-                        
-                        if (row != 0) {
-                            username = model.getValueAt(row, 0).toString();
-                            name = model.getValueAt(row,1).toString();
-                            lastName = model.getValueAt(row, 2).toString();
-                            mLastName = model.getValueAt(row, 3).toString();
-                            newUsername = name + lastName + mLastName;
-                            numPhone = Integer.parseInt(model.getValueAt(row, 4).toString());
-                            address = model.getValueAt(row, 5).toString();
-                            idRol = 2;
-                        } else {
-                            username = "admin";
-                            name = "admin";
-                            lastName = "admin";
-                            mLastName = "admin";
-                            numPhone = 0;
-                            address = "";
-                            newUsername = "admin";
-                            idRol = 1;
-                        }
-                        
-                        
-                        pass = model.getValueAt(row, 6).toString();
-                        String hashed = BCrypt.hashpw(pass, BCrypt.gensalt(12));
-                        
-                        User user = new User();
-                        user.setUsername(newUsername);
-                        user.setName(name);
-                        user.setLastName(lastName);
-                        user.setmLastName(mLastName);
-                        user.setCellPhone(numPhone);
-                        user.setAddress(address);
-                        user.setPassword(hashed);
-                        user.setIdRol(idRol);
-                        
-                        if (userDAO.updateUser(user,username)) {
-                            Password password = new Password();
-                            password.setIdUser(userDAO.readUser(newUsername).getIdUser());
-                            password.setThePassword(pass);
-                            if (passwordDAO.updatePassword(password)) {
-                                resp = true;
-                            } else {
-                                resp = false;
-                                break;
-                            }
-                        } else {
-                            resp = false;
-                            break;
-                        }
-                    }
-                    
-                    if (resp) {
-                        fillTheTableUsers(window);
-                        window.showSuccessfullMessage("Datos actualizados correctamente.");
-                    } else {
-                        //rowsEdited.clear();
-                        window.showErrorMessage("Error en la conexión, contacte al desarrollador.");
-                    }
-                    
-                    rowsEdited.clear();
-                    
-                } else {
-                    window.showQuestionMessage("No se encontraron filas editadas");
-                }
-            }
-        });
+        
         //CONTROL DEL BOTON ELIMINAR
         window.getLblBtnDelete().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int row = window.getTblUsers().getSelectedRow();
-                String username = window.getTblUsers().getModel().getValueAt(row, 0).toString();
-                User user = userDAO.readUser(username);
-                
-                if (user.getIdRol() != 1) {
-                    
-                    productSaleDAO.backupProductSales(user.getIdUser());
-                    if (userDAO.deleteUser(username)) {
-                        fillTheTableUsers(window);
-                        window.showSuccessfullMessage("Usuario eliminado.");
+                if (row != -1) {
+                    String username = window.getTblUsers().getModel().getValueAt(row, 0).toString();
+                    User user = userDAO.readUser(username);
+
+                    if (user.getIdRol() != 1) {
+
+                        productSaleDAO.backupProductSales(user.getIdUser());
+                        if (userDAO.deleteUser(username)) {
+                            fillTheTableUsers(window);
+                            window.showSuccessfullMessage("Usuario eliminado.");
+                        } else {
+                            window.showErrorMessage("Error al tratar de eliminar Usuario.");
+                        }
+
                     } else {
-                        window.showErrorMessage("Error al tratar de eliminar Usuario.");
+                        ErrorModal modal = new ErrorModal("Usuario admin no puede ser eleminado.");
                     }
-                    
                 } else {
-                    ErrorModal modal = new ErrorModal("Usuario admin no puede ser eleminado");
-                }
-                
+                    ErrorModal errorModal = new ErrorModal("Debe seleccionar la fila que desea eliminar.");
+                }               
             }
         });
         
@@ -243,14 +195,18 @@ public class SettingsController extends MouseAdapter {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
     }
+    private boolean nonEmptyData(UsersWindow usersWindow) {
+        boolean resp = false;
+        return resp;
+    }
     private void fillTheTableUsers(UsersWindow window) {
-        ArrayList<User> users = (ArrayList)userDAO.getUsers();
+        
         DefaultTableModel model = (DefaultTableModel)window.getTblUsers().getModel();
 
         if (model.getRowCount() > 0) {
             model.setRowCount(0);
         }
-        
+        users = (ArrayList<User>)userDAO.getUsers();
         for (User user : users) {
             String row[] = {
                 user.getUsername(),
@@ -271,7 +227,7 @@ public class SettingsController extends MouseAdapter {
             public void mouseClicked(MouseEvent e) {
                 JLabel lblBtn = (JLabel)e.getSource();
                 if (addUserWindow.isFilesFull()) {
-                    if (addUserWindow.correctData()) {
+                    if (addUserWindow.correctData()) { //verifica que no se use la palabra reservada 'admin'
                         
                         try {
                         
@@ -299,6 +255,8 @@ public class SettingsController extends MouseAdapter {
                                 lblBtn.setBackground(Color.GRAY);
                                 addUserWindow.showSuccessfullSave();
                                 addUserWindow.getLblBtnSave().removeMouseListener(this);
+                                desactivateFields(addUserWindow);
+                                
                             } else {
                                 addUserWindow.showNotSave("Error de conexión, contacte al desarrollador");
                             }
@@ -376,5 +334,14 @@ public class SettingsController extends MouseAdapter {
                 }
             }
         }
+    }
+    
+    public void desactivateFields(AddUserWindow addUserWindow) {
+        addUserWindow.getTxFieldName().setEnabled(false);
+        addUserWindow.getTxFieldLastName().setEnabled(false);
+        addUserWindow.getTxFieldMLastName().setEnabled(false);
+        addUserWindow.getTxFieldAddress().setEnabled(false);
+        addUserWindow.getTxFieldCel().setEnabled(false);
+        addUserWindow.getTxFieldPassword().setEnabled(false);
     }
 }

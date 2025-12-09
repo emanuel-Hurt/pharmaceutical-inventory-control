@@ -32,7 +32,7 @@ public class SettingsPanel extends javax.swing.JPanel {
         centerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(244, 244, 244));
 
         centerPanel.setBackground(new java.awt.Color(255, 255, 255));
         centerPanel.setLayout(new java.awt.GridLayout(4, 1, 0, 20));

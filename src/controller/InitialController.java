@@ -46,6 +46,7 @@ public class InitialController extends MouseAdapter {
     private JLabel lblBtnControlPanel, lblBtnProducts, lblBtnBuys;
     private JLabel lblBtnSale, lblBtnSettings, lblBtnProviders, lblBtnInputProducts;
     private JLabel lblBtnSalesHistory;
+    private JLabel lblBtnCloseSesion;
     
     public InitialController(InitialWindow initialWindow, FileConfig fileConfig, User user) {
         iniWindow = initialWindow;
@@ -89,6 +90,7 @@ public class InitialController extends MouseAdapter {
         lblBtnProviders = iniWindow.getLblBtnProviders();
         lblBtnInputProducts = iniWindow.getLblBtnInputProducts();
         lblBtnSalesHistory = iniWindow.getLblBtnSalesHistory();
+        lblBtnCloseSesion = iniWindow.getLblBtnCloseSesion();
         
         //ponemos a la escucha los botones
         lblBtnControlPanel.addMouseListener(this);
@@ -99,27 +101,27 @@ public class InitialController extends MouseAdapter {
         lblBtnProviders.addMouseListener(this);
         lblBtnInputProducts.addMouseListener(this);
         lblBtnSalesHistory.addMouseListener(this);
+        lblBtnCloseSesion.addMouseListener(this);
         
         //definimos los colores para los botones, enterColor, y seleccionado
         enterColor = new Color(81, 81, 169);
         exitColor = new Color(18,19,130);
-        //selectColor = new Color(1, 191, 65);
-        selectColor = new Color(110, 95, 240);
+        selectColor = new Color(0, 91, 197);
         selected = lblBtnControlPanel;
         lblBtnControlPanel.setBackground(selectColor);
     }
     
-    public void setControlPanel(ControlPanel panel) {
-        controlPanel = panel;
-        
-        controlPanel.getBtnBuys().addMouseListener(this);
-        controlPanel.getBtnNewSale().addMouseListener(this);
-        controlPanel.getBtnProductsList().addMouseListener(this);
-        
-        putProductsToExpire();
-        putProductsWhitExistenceMinimum();
-    }
-    
+//    public void setControlPanel(ControlPanel panel) {
+//        controlPanel = panel;
+//        
+//        controlPanel.getBtnBuys().addMouseListener(this);
+//        controlPanel.getBtnNewSale().addMouseListener(this);
+//        controlPanel.getBtnProductsList().addMouseListener(this);
+//        
+//        putProductsToExpire();
+//        putProductsWhitExistenceMinimum();
+//    }
+//    
     public void activeInitialWindow() {
         putCurrentDate();
         putNameToLblUser();
@@ -206,12 +208,12 @@ public class InitialController extends MouseAdapter {
         if (lblBtnControlPanel.equals(source)) {
             selected = lblBtnControlPanel;
             lblBtnControlPanel.setBackground(selectColor);
-            ControlPanel ctrlPanel = new ControlPanel();
-            setControlPanel(ctrlPanel);
+            CtrlPanel ctrlPanel = new CtrlPanel();
+            //setControlPanel(ctrlPanel);
             iniWindow.changeCenterPanel(ctrlPanel);
         }
         
-        else if (source.equals(lblBtnProducts) || source.equals(controlPanel.getBtnProductsList())) {
+        else if (source.equals(lblBtnProducts)) {
             
             if (user.getIdRol() == 1) {
                 selected = lblBtnProducts;
@@ -228,7 +230,7 @@ public class InitialController extends MouseAdapter {
             
         }
         
-        else if (source.equals(lblBtnBuys) || source.equals(controlPanel.getBtnBuys())) {
+        else if (source.equals(lblBtnBuys)) {
             
             if (user.getIdRol() == 1) {
                 selected = lblBtnBuys;
@@ -245,7 +247,7 @@ public class InitialController extends MouseAdapter {
              
         }
         
-        else if (source.equals(lblBtnSale) || source.equals(controlPanel.getBtnNewSale())) {
+        else if (source.equals(lblBtnSale)) {
             selected = lblBtnSale;
             lblBtnSale.setBackground(selectColor);
             
@@ -325,6 +327,13 @@ public class InitialController extends MouseAdapter {
                 ErrorModal modal = new ErrorModal("ACCESO RESTRINGIDO");
             }
             
+        }
+        
+        else if (source.equals(lblBtnCloseSesion)) {
+            AccessWindow accessWindow = new AccessWindow();
+            UserDAO userDAO = new UserDAO(fileConfig);
+            AccessController accessController = new AccessController(accessWindow, userDAO, fileConfig);
+            this.iniWindow.dispose();
         }
     }
     

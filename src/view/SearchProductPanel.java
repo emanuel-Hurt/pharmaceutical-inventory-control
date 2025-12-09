@@ -29,8 +29,8 @@ public class SearchProductPanel extends javax.swing.JPanel {
         return btnSearch;
     }   
     
-    public JTextField getFieldBrowser() {
-        return fieldBrowser;
+    public JTextField getSearchField() {
+        return SearchField;
     }
     
     public JTable getTableProductsFound() {
@@ -60,7 +60,7 @@ public class SearchProductPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         btnSearch = new javax.swing.JLabel();
-        fieldBrowser = new javax.swing.JTextField();
+        SearchField = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         tableProductsFound = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -70,7 +70,7 @@ public class SearchProductPanel extends javax.swing.JPanel {
         lblBtnMakeSale = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(241, 242, 247));
+        setBackground(new java.awt.Color(244, 244, 244));
         setLayout(new java.awt.GridBagLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,9 +92,10 @@ public class SearchProductPanel extends javax.swing.JPanel {
             }
         });
 
-        fieldBrowser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        fieldBrowser.setForeground(new java.awt.Color(51, 51, 51));
-        fieldBrowser.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1)));
+        SearchField.setBackground(new java.awt.Color(255, 255, 255));
+        SearchField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        SearchField.setForeground(new java.awt.Color(51, 51, 51));
+        SearchField.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -102,7 +103,7 @@ public class SearchProductPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(fieldBrowser, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -111,7 +112,7 @@ public class SearchProductPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fieldBrowser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -142,6 +143,7 @@ public class SearchProductPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tableProductsFound.getTableHeader().setReorderingAllowed(false);
         tableProductsFound.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableProductsFoundMouseClicked(evt);
@@ -233,7 +235,6 @@ public class SearchProductPanel extends javax.swing.JPanel {
         add(lblBtnMakeSale, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("---");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -271,8 +272,8 @@ public class SearchProductPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ProductsSaleListPanel;
+    private javax.swing.JTextField SearchField;
     private javax.swing.JLabel btnSearch;
-    private javax.swing.JTextField fieldBrowser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

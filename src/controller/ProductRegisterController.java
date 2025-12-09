@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import model.Percentage;
 import model.Product;
 import model.Provider;
@@ -15,6 +17,8 @@ import model.daos.PercentageDAO;
 import model.daos.ProductDAO;
 import model.daos.ProviderDAO;
 import model.daos.PurchaseDAO;
+import resources.DoubleVerifier;
+import resources.IntVerifier;
 import view.ErrorModal;
 import view.ProductRegisterPanel;
 import view.SuccessModal;
@@ -60,6 +64,16 @@ public class ProductRegisterController extends MouseAdapter implements ActionLis
             this.productRegisterPanel.getComBoxProvider().setModel(comboModel);
         }
         
+        //COLOCACION DE VALIDADORES A LOS CAMPOS PARA VALORES NUMERICOS
+        JTextField quantityField = productRegisterPanel.getFieldQuantity();
+        JTextField totalCostField = this.productRegisterPanel.getFieldTotalCostProduct();
+        JTextField unitPriceField = this.productRegisterPanel.getFieldUnitPrice();
+        
+        JLabel errorLbl = this.productRegisterPanel.getErrorLbl();
+        
+        quantityField.setInputVerifier(new IntVerifier(quantityField.getBorder(), errorLbl));
+        totalCostField.setInputVerifier(new DoubleVerifier(totalCostField.getBorder(), errorLbl));
+        unitPriceField.setInputVerifier(new DoubleVerifier(unitPriceField.getBorder(), errorLbl));
     }
     
     @Override
@@ -70,50 +84,54 @@ public class ProductRegisterController extends MouseAdapter implements ActionLis
             if (eventSource.equals(productRegisterPanel.getLblBtnAcept())) {
                 if (allFull()) {
                     Product product = new Product();
-                    prepareProduct(product);
-                    //GUARDAR EL PRODUCTO
-                    if (productRegisterPanel.updateProduct()) { //reposicion
-                        
-                        Product oldProduct = productDAO.readProduct(product.getCodProduct());
-                        int nowExistence = oldProduct.getExistence() + product.getExistence();
-                        product.setExistence(nowExistence);
-                        
-                        if (productDAO.updateProduct(product)) {
-                            int idProduct = productDAO.readProduct(product.getCodProduct()).getIdProduct();
-                            Purchase purchase = new Purchase();
-                            preparePurchase(purchase,idProduct);
-                            if (purchaseDAO.createPurchase(purchase)) {
-                                SuccessModal modal = new SuccessModal("Producto Registrado Exitosamente");
-                                clearPurchaseNewProductPanel();
-                            } else {
-                                ErrorModal errorModal = new ErrorModal("Error al Registrar Compra de Producto");
-                            }
-                        }
-                        else {
-                            ErrorModal errorModal = new ErrorModal("Error al Actualizar el Producto");
-                        }
-                    }else { //crear nuevo
-                        if (productDAO.verifyExistence(product)) {
-                            ErrorModal errorModal = new ErrorModal("El Código de producto que intenta registrar ya existe");
-                        } else {
-                            int idProduct = productDAO.createProduct(product);
-                            if (idProduct > 0) {
+                    if (prepareProduct(product)){
+                        //GUARDAR EL PRODUCTO
+                        if (productRegisterPanel.updateProduct()) { //reposicion
+
+                            Product oldProduct = productDAO.readProduct(product.getCodProduct());
+                            int nowExistence = oldProduct.getExistence() + product.getExistence();
+                            product.setExistence(nowExistence);
+
+                            if (productDAO.updateProduct(product)) {
+                                int idProduct = productDAO.readProduct(product.getCodProduct()).getIdProduct();
                                 Purchase purchase = new Purchase();
-                                preparePurchase(purchase, idProduct);
+                                preparePurchase(purchase,idProduct);
                                 if (purchaseDAO.createPurchase(purchase)) {
                                     SuccessModal modal = new SuccessModal("Producto Registrado Exitosamente");
                                     clearPurchaseNewProductPanel();
                                 } else {
-                                    ErrorModal errorModal = new ErrorModal("Error al registrar el producto");
+                                    ErrorModal errorModal = new ErrorModal("Error al Registrar Compra de Producto");
                                 }
-
                             }
                             else {
-                                ErrorModal errorModal = new ErrorModal("Error al Crear el Nuevo Producto");
+                                ErrorModal errorModal = new ErrorModal("Error al Actualizar el Producto");
                             }
+                        }else { //crear nuevo
+                            if (productDAO.verifyExistence(product)) {
+                                ErrorModal errorModal = new ErrorModal("El Código de producto que intenta registrar ya existe");
+                            } else {
+                                int idProduct = productDAO.createProduct(product);
+                                if (idProduct > 0) {
+                                    Purchase purchase = new Purchase();
+                                    preparePurchase(purchase, idProduct);
+                                    if (purchaseDAO.createPurchase(purchase)) {
+                                        SuccessModal modal = new SuccessModal("Producto Registrado Exitosamente");
+                                        clearPurchaseNewProductPanel();
+                                    } else {
+                                        ErrorModal errorModal = new ErrorModal("Error al registrar el producto");
+                                    }
+
+                                }
+                                else {
+                                    ErrorModal errorModal = new ErrorModal("Error al Crear el Nuevo Producto");
+                                }
+                            }
+
                         }
-                        
+                    } else {
+                        ErrorModal erroModal = new ErrorModal("Use valores númericos para los campos cantidad y costos");
                     }
+                    
                 }
                 else {
                     ErrorModal errorModal = new ErrorModal("Hay campos obligatorios que no fueron llenados");
@@ -153,31 +171,38 @@ public class ProductRegisterController extends MouseAdapter implements ActionLis
         return resp;
     }
     
-    private void prepareProduct(Product product) {
-        product.setNameProduct(productRegisterPanel.getFieldProductName().getText());
-        product.setGenericName(productRegisterPanel.getFieldGenericName().getText());
-        product.setPharmaForm(productRegisterPanel.getFieldPharmaForm().getText());
-        product.setConcentration(productRegisterPanel.getFieldConcentration().getText());
+    private boolean prepareProduct(Product product) {
+        try {
+            product.setNameProduct(productRegisterPanel.getFieldProductName().getText());
+            product.setGenericName(productRegisterPanel.getFieldGenericName().getText());
+            product.setPharmaForm(productRegisterPanel.getFieldPharmaForm().getText());
+            product.setConcentration(productRegisterPanel.getFieldConcentration().getText());
 
-        Date dueDate = Date.valueOf(productRegisterPanel.getFieldDueDate().getText());
-        product.setDueDate(dueDate);
+            Date dueDate = Date.valueOf(productRegisterPanel.getFieldDueDate().getText());
+            product.setDueDate(dueDate);
 
-        double unitPrice = Double.parseDouble(productRegisterPanel.getFieldUnitPrice().getText());
+            double unitPrice = Double.parseDouble(productRegisterPanel.getFieldUnitPrice().getText());
 
-        product.setPrice(unitPrice);
+            product.setPrice(unitPrice);
 
 
-        int existence = Integer.parseInt(productRegisterPanel.getFieldQuantity().getText());
-        product.setExistence(existence);
+            int existence = Integer.parseInt(productRegisterPanel.getFieldQuantity().getText());
+            product.setExistence(existence);
 
-        product.setCodProduct(productRegisterPanel.getFieldCodProduct().getText());
-        product.setNumLote(productRegisterPanel.getFieldNumLote().getText());
+            product.setCodProduct(productRegisterPanel.getFieldCodProduct().getText());
+            product.setNumLote(productRegisterPanel.getFieldNumLote().getText());
 
-        //obtencion del idProvider
-        String nameProvider = (String)productRegisterPanel.getComBoxProvider().getSelectedItem();               
-        Provider provider = providerDAO.readProvider(nameProvider);
-        int idProvider = provider.getIdProvider();
-        product.setIdProvider(idProvider);
+            //obtencion del idProvider
+            String nameProvider = (String)productRegisterPanel.getComBoxProvider().getSelectedItem();               
+            Provider provider = providerDAO.readProvider(nameProvider);
+            int idProvider = provider.getIdProvider();
+            product.setIdProvider(idProvider);
+            
+            return true;
+            
+        }catch(NumberFormatException ex) {
+            return false;
+        }
     }
     
     private void preparePurchase(Purchase purchase, int idProduct) {
@@ -195,6 +220,7 @@ public class ProductRegisterController extends MouseAdapter implements ActionLis
     private void clearPurchaseNewProductPanel() {
         //OBTENCION DE LOS DATOS DE LA COMPRA DEL PRODUCTO RESPECTIVO
         productRegisterPanel.getFieldProductName().setText("");
+        productRegisterPanel.getFieldGenericName().setText("");
         productRegisterPanel.getFieldPharmaForm().setText("");
         productRegisterPanel.getFieldConcentration().setText("");
         productRegisterPanel.getFieldDueDate().setText("");
@@ -204,6 +230,7 @@ public class ProductRegisterController extends MouseAdapter implements ActionLis
         productRegisterPanel.getFieldUnitPrice().setText("");
         productRegisterPanel.getFieldCodProduct().setText("");
         productRegisterPanel.getFieldNumLote().setText("");
+        productRegisterPanel.getFieldPurchaseDate().setText("");
     }
     
     public void actionPerformed(ActionEvent e) {

@@ -30,7 +30,6 @@ public class UsersWindow extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        lblBtnSaveChanges = new javax.swing.JLabel();
         lblMessage = new javax.swing.JLabel();
         lblBtnDelete = new javax.swing.JLabel();
 
@@ -55,20 +54,13 @@ public class UsersWindow extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblUsers.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblUsers);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Usuarios");
-
-        lblBtnSaveChanges.setBackground(new java.awt.Color(255, 255, 255));
-        lblBtnSaveChanges.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnSaveChanges.setForeground(new java.awt.Color(51, 51, 51));
-        lblBtnSaveChanges.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnSaveChanges.setText("Guardar Cambios");
-        lblBtnSaveChanges.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        lblBtnSaveChanges.setOpaque(true);
 
         lblMessage.setBackground(new java.awt.Color(255, 255, 255));
         lblMessage.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -77,13 +69,20 @@ public class UsersWindow extends javax.swing.JFrame {
         lblMessage.setText("jLabel2");
         lblMessage.setOpaque(true);
 
-        lblBtnDelete.setBackground(new java.awt.Color(255, 255, 255));
+        lblBtnDelete.setBackground(new java.awt.Color(204, 204, 204));
         lblBtnDelete.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblBtnDelete.setForeground(new java.awt.Color(51, 51, 51));
         lblBtnDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnDelete.setText("Eliminar Registro");
-        lblBtnDelete.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
+        lblBtnDelete.setText("Eliminar");
         lblBtnDelete.setOpaque(true);
+        lblBtnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBtnDeleteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBtnDeleteMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -93,12 +92,9 @@ public class UsersWindow extends javax.swing.JFrame {
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblBtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblBtnSaveChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,13 +102,9 @@ public class UsersWindow extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblBtnSaveChanges, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 2, Short.MAX_VALUE))
-                    .addComponent(lblBtnDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addComponent(lblBtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,9 +125,16 @@ public class UsersWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JLabel getLblBtnSaveChanges() {
-        return lblBtnSaveChanges;
-    }
+    private void lblBtnDeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnDeleteMouseEntered
+        this.lblBtnDelete.setBackground(new Color(255,102,102));
+        this.lblBtnDelete.setForeground(Color.WHITE);
+    }//GEN-LAST:event_lblBtnDeleteMouseEntered
+
+    private void lblBtnDeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnDeleteMouseExited
+        this.lblBtnDelete.setBackground(new Color(204,204,204));
+        this.lblBtnDelete.setForeground(new Color(102,102,102));
+    }//GEN-LAST:event_lblBtnDeleteMouseExited
+
 
     public JTable getTblUsers() {
         return tblUsers;
@@ -173,7 +172,6 @@ public class UsersWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBtnDelete;
-    private javax.swing.JLabel lblBtnSaveChanges;
     private javax.swing.JLabel lblMessage;
     private javax.swing.JTable tblUsers;
     // End of variables declaration//GEN-END:variables
