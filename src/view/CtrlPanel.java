@@ -161,6 +161,7 @@ public class CtrlPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(244, 244, 244));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 255)));
+        jPanel2.setPreferredSize(new java.awt.Dimension(164, 85));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(12, 20, 51));
@@ -179,7 +180,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,6 +194,7 @@ public class CtrlPanel extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(244, 244, 244));
         jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 255)));
+        jPanel3.setPreferredSize(new java.awt.Dimension(164, 85));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(12, 20, 51));
@@ -211,7 +213,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +227,7 @@ public class CtrlPanel extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(244, 244, 244));
         jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 255)));
+        jPanel4.setPreferredSize(new java.awt.Dimension(164, 85));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(12, 20, 51));
@@ -243,7 +246,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,6 +260,7 @@ public class CtrlPanel extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(244, 244, 244));
         jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 255)));
+        jPanel5.setPreferredSize(new java.awt.Dimension(164, 85));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(12, 20, 51));
@@ -275,7 +279,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jLabel9))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,11 +288,12 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel10)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(244, 244, 244));
         jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 5, 0, new java.awt.Color(0, 0, 255)));
+        jPanel6.setPreferredSize(new java.awt.Dimension(164, 85));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(12, 20, 51));
@@ -307,7 +312,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel11))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +321,7 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addComponent(jLabel11)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel12)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -334,16 +339,16 @@ public class CtrlPanel extends javax.swing.JPanel {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel13))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         upperPanelLayout.setVerticalGroup(
             upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -352,14 +357,14 @@ public class CtrlPanel extends javax.swing.JPanel {
                 .addComponent(jLabel13)
                 .addGap(18, 18, 18)
                 .addGroup(upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
 
@@ -372,7 +377,10 @@ public class CtrlPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(upperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(lowerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lowerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
