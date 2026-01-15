@@ -1,13 +1,10 @@
 package sisfarma;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import controller.AccessController;
-import controller.InitialController;
 import model.FileConfig;
-import model.User;
 import model.daos.UserDAO;
 import view.AccessWindow;
-import view.ControlPanel;
-import view.InitialWindow;
 
 /**
  *
@@ -18,22 +15,7 @@ public class SisFarma {
     
     public static void main(String[] args) {       
         
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            //logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        FlatLightLaf.setup();
         
         FileConfig fileConfig = new FileConfig();
         UserDAO userDAO = new UserDAO(fileConfig);

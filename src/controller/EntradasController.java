@@ -8,7 +8,7 @@ import model.Purchase;
 import model.daos.ProductDAO;
 import model.daos.ProviderDAO;
 import model.daos.PurchaseDAO;
-import view.EntradasPanel;
+import view.PurchaseHistoryPanel;
 import view.ErrorModal;
 import view.QuestionModal;
 import view.SuccessModal;
@@ -19,7 +19,7 @@ import view.SuccessModal;
  */
 public class EntradasController {
     
-    private EntradasPanel entradasPanel;
+    private PurchaseHistoryPanel entradasPanel;
     
     private ProductDAO productDAO;
     private ProviderDAO providerDAO;
@@ -32,7 +32,7 @@ public class EntradasController {
         purchaseDAO = purchdao;
     }
     
-    public void setEntradasPanel(EntradasPanel panel) {
+    public void setEntradasPanel(PurchaseHistoryPanel panel) {
         entradasPanel = panel;
         
         purchases = (ArrayList)purchaseDAO.getAllPurchases();

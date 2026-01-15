@@ -1,8 +1,10 @@
 package view;
 
+import controller.ProductSaleController;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -11,23 +13,45 @@ import javax.swing.JTable;
 public class SaleDetailModal extends javax.swing.JPanel {
 
     private JDialog modalFrame;
+    private ProductSaleController saleController;
     
-    public SaleDetailModal() {
+    public SaleDetailModal(ProductSaleController controller, double totalAmount) {
         initComponents();
+        
+        lblTotalAmount.setText(totalAmount+"");
+        
+        saleController = controller;        
+
     }
 
-    public JTable getTblSaleDetail() {
-        return tblSaleDetail;
+    public void setModalFrame() {
+        this.modalFrame = new JDialog();
+        this.modalFrame.setModal(true);
+        this.modalFrame.setUndecorated(true);
+        this.modalFrame.add(this);
+        this.modalFrame.pack();
+        this.modalFrame.setLocationRelativeTo(null);
+        this.modalFrame.setVisible(true);
     }
     
-    public void showSaleDetailModal() {
-        modalFrame = new JDialog();
-        modalFrame.setUndecorated(true);
-        modalFrame.setModal(true);
-        modalFrame.add(this);      
-        modalFrame.pack();
-        modalFrame.setLocationRelativeTo(null);
-        modalFrame.setVisible(true);
+    public JTextField getFieldNITCI() {
+        return fieldNITCI;
+    }
+
+    public JTextField getFieldNameClient() {
+        return fieldNameClient;
+    }
+
+    public JLabel getLblBtnAcept() {
+        return lblBtnAcept;
+    }
+
+    public JTextArea getTxtAreaDescription() {
+        return txtAreaDescription;
+    }
+
+    public JDialog getModalFrame() {
+        return modalFrame;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,159 +62,167 @@ public class SaleDetailModal extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblHour = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblClient = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        fieldNameClient = new javax.swing.JTextField();
+        fieldNITCI = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSaleDetail = new javax.swing.JTable();
-        lblHour2 = new javax.swing.JLabel();
-        lblTotalMount = new javax.swing.JLabel();
-        lblBtnOk = new javax.swing.JLabel();
+        txtAreaDescription = new javax.swing.JTextArea();
+        lblBtnAcept = new javax.swing.JLabel();
+        lblBtnCancel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblTotalAmount = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
 
-        lblHour.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblHour.setForeground(new java.awt.Color(51, 51, 51));
-        lblHour.setText("08:05:12");
-
-        lblDate.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(51, 51, 51));
-        lblDate.setText("2024-04-30");
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Cliente:");
+        jLabel1.setText("Detalle de Venta");
 
-        lblClient.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblClient.setForeground(new java.awt.Color(51, 51, 51));
-        lblClient.setText("Sr. Perez");
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("Cliente:");
 
-        tblSaleDetail.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        tblSaleDetail.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel3.setText("NIT o CI:");
 
-            },
-            new String [] {
-                "PROVEEDOR", "PRODUCTO", "FORMA", "UNIDADES", "MONTO (Bs.)"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
+        fieldNameClient.setColumns(25);
+        fieldNameClient.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tblSaleDetail);
+        fieldNITCI.setColumns(20);
+        fieldNITCI.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
 
-        lblHour2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblHour2.setForeground(new java.awt.Color(51, 51, 51));
-        lblHour2.setText("MONTO TOTAL: Bs.");
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setText("Descripción:");
 
-        lblTotalMount.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lblTotalMount.setForeground(new java.awt.Color(51, 51, 51));
-        lblTotalMount.setText("..............");
+        txtAreaDescription.setColumns(20);
+        txtAreaDescription.setLineWrap(true);
+        txtAreaDescription.setRows(5);
+        txtAreaDescription.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtAreaDescription);
 
-        lblBtnOk.setBackground(new java.awt.Color(255, 255, 255));
-        lblBtnOk.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnOk.setForeground(new java.awt.Color(51, 51, 51));
-        lblBtnOk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnOk.setText("OK");
-        lblBtnOk.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        lblBtnOk.setOpaque(true);
-        lblBtnOk.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblBtnAcept.setBackground(new java.awt.Color(26, 115, 182));
+        lblBtnAcept.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblBtnAcept.setForeground(new java.awt.Color(255, 255, 255));
+        lblBtnAcept.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnAcept.setText("Aceptar");
+        lblBtnAcept.setOpaque(true);
+        lblBtnAcept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBtnOkMouseClicked(evt);
+                lblBtnAceptMouseClicked(evt);
             }
         });
+
+        lblBtnCancel.setBackground(new java.awt.Color(204, 204, 204));
+        lblBtnCancel.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblBtnCancel.setForeground(new java.awt.Color(51, 51, 51));
+        lblBtnCancel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnCancel.setText("Cancelar");
+        lblBtnCancel.setOpaque(true);
+        lblBtnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBtnCancelMouseClicked(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setText("Moto Total: Bs.");
+
+        lblTotalAmount.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblTotalAmount.setForeground(new java.awt.Color(51, 51, 51));
+        lblTotalAmount.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblClient)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                        .addGap(156, 156, 156)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblHour)
-                        .addGap(16, 16, 16))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblHour2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTotalMount)
-                .addGap(39, 39, 39))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldNITCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldNameClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblTotalAmount)))))
+                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
-                .addComponent(lblBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(lblBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblBtnAcept, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHour)
-                    .addComponent(lblDate))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblClient))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(fieldNameClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHour2)
-                    .addComponent(lblTotalMount))
+                    .addComponent(jLabel3)
+                    .addComponent(fieldNITCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblBtnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(lblTotalAmount))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBtnAcept, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblBtnOkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnOkMouseClicked
+    private void lblBtnAceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnAceptMouseClicked
+        saleController.registerSale();
+    }//GEN-LAST:event_lblBtnAceptMouseClicked
+
+    private void lblBtnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCancelMouseClicked
         modalFrame.dispose();
-    }//GEN-LAST:event_lblBtnOkMouseClicked
+    }//GEN-LAST:event_lblBtnCancelMouseClicked
 
-    public JLabel getLblTotalMount() {
-        return lblTotalMount;
-    }
-    
-    public JLabel getLblClient() {
-        return lblClient;
-    }
-
-    public JLabel getLblDate() {
-        return lblDate;
-    }
-
-    public JLabel getLblHour() {
-        return lblHour;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fieldNITCI;
+    private javax.swing.JTextField fieldNameClient;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBtnOk;
-    private javax.swing.JLabel lblClient;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblHour;
-    private javax.swing.JLabel lblHour2;
-    private javax.swing.JLabel lblTotalMount;
-    private javax.swing.JTable tblSaleDetail;
+    private javax.swing.JLabel lblBtnAcept;
+    private javax.swing.JLabel lblBtnCancel;
+    private javax.swing.JLabel lblTotalAmount;
+    private javax.swing.JTextArea txtAreaDescription;
     // End of variables declaration//GEN-END:variables
 }

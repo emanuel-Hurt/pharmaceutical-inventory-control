@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Provider;
 import model.daos.ProviderDAO;
 import view.ErrorModal;
-import view.ProvidersRegisterPanel;
+import view.ProvidersPanel;
 import view.QuestionModal;
 import view.SuccessModal;
 
@@ -24,7 +24,7 @@ import view.SuccessModal;
 public class ProviderController extends MouseAdapter {
     
     private final ProviderDAO providerDAO;
-    private ProvidersRegisterPanel providersPanel;
+    private ProvidersPanel providersPanel;
     private JTable tableProviders;
     private HashSet<Integer> editedRows;
     private ArrayList<Provider> providersList;
@@ -35,7 +35,7 @@ public class ProviderController extends MouseAdapter {
         this.providersList = (ArrayList<Provider>)providerDAO.providersList();
     }
     
-    public void setProvidersRegisterPanel(ProvidersRegisterPanel panel) {
+    public void setProvidersRegisterPanel(ProvidersPanel panel) {
         providersPanel = panel;
         //REGISTRAR NUEVOS PROVEEDORES
         providersPanel.getLblBtnRegister().addMouseListener(this);

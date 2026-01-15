@@ -236,7 +236,7 @@ public class InitialController extends MouseAdapter {
                 selected = lblBtnBuys;
                 lblBtnBuys.setBackground(selectColor);
 
-                OptionsPurchasePanel selectPurchasePanel = new OptionsPurchasePanel();
+                InputTypePanel selectPurchasePanel = new InputTypePanel();
 
                 purchaseController.setOptionsPurchasePanel(selectPurchasePanel);
 
@@ -251,7 +251,7 @@ public class InitialController extends MouseAdapter {
             selected = lblBtnSale;
             lblBtnSale.setBackground(selectColor);
             
-            SearchProductPanel searchPanel = new SearchProductPanel();
+            SalePanel searchPanel = new SalePanel();
             productSaleController.setSearchProductPanel(searchPanel);
             
             iniWindow.changeCenterPanel(searchPanel);
@@ -290,7 +290,7 @@ public class InitialController extends MouseAdapter {
                 selected = lblBtnProviders;
                 lblBtnProviders.setBackground(selectColor);
 
-                ProvidersRegisterPanel providersPanel = new ProvidersRegisterPanel();
+                ProvidersPanel providersPanel = new ProvidersPanel();
                 providerController.setProvidersRegisterPanel(providersPanel);
                 iniWindow.changeCenterPanel(providersPanel);
             } else {
@@ -305,7 +305,7 @@ public class InitialController extends MouseAdapter {
                 selected = lblBtnInputProducts;
                 lblBtnInputProducts.setBackground(selectColor);
 
-                EntradasPanel entradasPanel = new EntradasPanel();
+                PurchaseHistoryPanel entradasPanel = new PurchaseHistoryPanel();
                 entradasController.setEntradasPanel(entradasPanel);
                 iniWindow.changeCenterPanel(entradasPanel);
             } else {

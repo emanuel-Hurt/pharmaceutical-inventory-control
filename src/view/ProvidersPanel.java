@@ -9,11 +9,11 @@ import javax.swing.JTextField;
  *
  * @author EmanuelHurt
  */
-public class ProvidersRegisterPanel extends javax.swing.JPanel {
+public class ProvidersPanel extends javax.swing.JPanel {
 
     private Color enterColor, exitColor;
     
-    public ProvidersRegisterPanel() {
+    public ProvidersPanel() {
         initComponents();
         enterColor = new Color(18,19,130);
         exitColor = new Color(26,115,182);

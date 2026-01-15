@@ -4,26 +4,27 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
  *
- * @author EmanuelHurt
+ * @author Emanuel Hurt
  */
-public class ProductRegisterPanel extends javax.swing.JPanel {
+public class ProductRegistrationPanel extends javax.swing.JPanel {
 
     private boolean updateProduct;
     private Color enterColor;
     private Color exitColor;
     
-    public ProductRegisterPanel(boolean updateProduct) {
+    public ProductRegistrationPanel(boolean updateProduct, JPanel predecessor) {
         initComponents();
         this.updateProduct = updateProduct;
         enterColor = new Color(18,19,130);
         exitColor = new Color(26,115,182);
     }
-
+    
     public JTextField getFieldCodProduct() {
         return fieldCodProduct;
     }
@@ -99,6 +100,11 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
     public JLabel getErrorLbl() {
         return this.errorLbl;
     }
+
+    public JLabel getBtnLblBack() {
+        return this.btnLblBack;
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,7 +115,9 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mainPanel = new javax.swing.JPanel();
+        providerSubPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         fieldPurchaseDate = new javax.swing.JTextField();
@@ -119,9 +127,9 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         areaDescription = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
+        productsSubPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         fieldProductName = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -162,22 +170,22 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         fieldGenericName = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
         errorLbl = new javax.swing.JLabel();
+        btnLblBack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 244, 244));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setOpaque(false);
+        mainPanel.setBackground(new java.awt.Color(244, 244, 244));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        providerSubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        providerSubPanel.setOpaque(false);
+
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Nombre Proveedor:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Fecha de Ingreso:");
 
         fieldPurchaseDate.setColumns(11);
-        fieldPurchaseDate.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         fieldPurchaseDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fieldPurchaseDateMouseClicked(evt);
@@ -190,127 +198,110 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
 
         comBoxProvider.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel15.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
         jLabel15.setText("(*)");
 
-        jLabel28.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(102, 102, 102));
         jLabel28.setText("(*)");
 
-        jLabel29.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(153, 153, 153));
         jLabel29.setText("(*) Es campo obligatorio");
 
-        jLabel32.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(51, 51, 51));
         jLabel32.setText("Detalle:");
 
         areaDescription.setColumns(20);
-        areaDescription.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         areaDescription.setForeground(new java.awt.Color(51, 51, 51));
         areaDescription.setLineWrap(true);
         areaDescription.setRows(5);
         areaDescription.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(areaDescription);
+        jScrollPane2.setViewportView(areaDescription);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout providerSubPanelLayout = new javax.swing.GroupLayout(providerSubPanel);
+        providerSubPanel.setLayout(providerSubPanelLayout);
+        providerSubPanelLayout.setHorizontalGroup(
+            providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerSubPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(providerSubPanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comBoxProvider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel15))
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(providerSubPanelLayout.createSequentialGroup()
+                        .addGroup(providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(providerSubPanelLayout.createSequentialGroup()
                                 .addGap(125, 125, 125)
                                 .addComponent(fieldPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel28))
                     .addComponent(jLabel29)
                     .addComponent(jLabel32)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane2))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        providerSubPanelLayout.setVerticalGroup(
+            providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(providerSubPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comBoxProvider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(providerSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(fieldPurchaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28))
-                .addGap(47, 47, 47)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setOpaque(false);
+        productsSubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        productsSubPanel.setOpaque(false);
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Nombre del Producto:");
 
         fieldProductName.setColumns(20);
-        fieldProductName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Forma Farmacéutica:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Concentración:");
 
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Fecha de Vencimiento:");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("Cantidad:");
 
-        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("Costo Total de Compra:");
 
-        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Costo Unitario:");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Precio Unitario:");
 
         fieldPharmaForm.setColumns(20);
-        fieldPharmaForm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         fieldConcentration.setColumns(15);
-        fieldConcentration.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         fieldDueDate.setColumns(11);
-        fieldDueDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fieldDueDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 fieldDueDateMouseClicked(evt);
@@ -318,23 +309,20 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         });
 
         fieldQuantity.setColumns(5);
-        fieldQuantity.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         fieldTotalCostProduct.setColumns(5);
-        fieldTotalCostProduct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        lblUnitCost.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblUnitCost.setForeground(new java.awt.Color(51, 51, 51));
         lblUnitCost.setText("..........");
 
         fieldUnitPrice.setColumns(5);
-        fieldUnitPrice.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lblBtnAcept.setBackground(new java.awt.Color(26, 115, 182));
         lblBtnAcept.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblBtnAcept.setForeground(new java.awt.Color(255, 255, 255));
         lblBtnAcept.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBtnAcept.setText("ACEPTAR");
+        lblBtnAcept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnAcept.setOpaque(true);
         lblBtnAcept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -349,83 +337,63 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         jLabel16.setForeground(new java.awt.Color(51, 51, 51));
         jLabel16.setText("Bs.");
 
-        jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
         jLabel17.setText("Bs.");
 
-        jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(51, 51, 51));
         jLabel18.setText("Bs.");
 
-        jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(51, 51, 51));
         jLabel19.setText("Código del Producto:");
 
-        jLabel20.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
         jLabel20.setText("Número de Lote:");
 
         fieldCodProduct.setColumns(6);
-        fieldCodProduct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         fieldNumLote.setColumns(15);
-        fieldNumLote.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        btnOk.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         btnOk.setText("ok");
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("DATOS DEL PRODUCTO");
 
-        lblSalePercentage.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         lblSalePercentage.setForeground(new java.awt.Color(51, 51, 51));
         lblSalePercentage.setText("(+ X % para venta)");
 
-        jLabel14.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
         jLabel14.setText("(*)");
 
-        jLabel21.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(102, 102, 102));
         jLabel21.setText("(*)");
 
-        jLabel22.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 102, 102));
         jLabel22.setText("(*)");
 
-        jLabel23.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(102, 102, 102));
         jLabel23.setText("(*)");
 
-        jLabel24.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(102, 102, 102));
         jLabel24.setText("(*)");
 
-        jLabel25.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(102, 102, 102));
         jLabel25.setText("(*)");
 
-        jLabel26.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 102, 102));
         jLabel26.setText("(*)");
 
-        jLabel27.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(102, 102, 102));
         jLabel27.setText("(*)");
 
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("(*) Es campo obligatorio");
 
-        jLabel30.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(51, 51, 51));
         jLabel30.setText("Nombre Genérico:");
 
         fieldGenericName.setColumns(20);
-        fieldGenericName.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jLabel31.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 102, 102));
         jLabel31.setText("(*)");
 
@@ -433,58 +401,58 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         errorLbl.setForeground(new java.awt.Color(255, 255, 255));
         errorLbl.setText("error");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout productsSubPanelLayout = new javax.swing.GroupLayout(productsSubPanel);
+        productsSubPanel.setLayout(productsSubPanelLayout);
+        productsSubPanelLayout.setHorizontalGroup(
+            productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productsSubPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(productsSubPanelLayout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(errorLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(productsSubPanelLayout.createSequentialGroup()
+                        .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
+                                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, productsSubPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(fieldPharmaForm))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, productsSubPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel30)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(fieldGenericName))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, productsSubPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(fieldProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel14)
                                     .addComponent(jLabel31)
                                     .addComponent(jLabel21)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldConcentration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel22))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel23))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel24))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel16)
@@ -494,13 +462,13 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
                                 .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel25))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel17)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblUnitCost))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel18)
@@ -510,119 +478,142 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
                                 .addComponent(lblSalePercentage)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel26))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldCodProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel27))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(productsSubPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel20)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldNumLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 18, Short.MAX_VALUE))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(164, 164, 164)
+                        .addGap(0, 25, Short.MAX_VALUE))))
+            .addGroup(productsSubPanelLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
                 .addComponent(lblBtnAcept, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+        productsSubPanelLayout.setVerticalGroup(
+            productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(productsSubPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(errorLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(fieldProductName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(fieldGenericName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(fieldPharmaForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(fieldConcentration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(fieldDueDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(fieldQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel16)
                     .addComponent(fieldTotalCostProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOk)
                     .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jLabel17)
                     .addComponent(lblUnitCost))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel18)
                     .addComponent(fieldUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSalePercentage)
                     .addComponent(jLabel26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(fieldCodProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(productsSubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
                     .addComponent(fieldNumLote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblBtnAcept, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(providerSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(productsSubPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+        );
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(productsSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(providerSubPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(mainPanel);
+
+        btnLblBack.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnLblBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnLblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back-icon.png"))); // NOI18N
+        btnLblBack.setText("Atrás");
+        btnLblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(btnLblBack)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(btnLblBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void fieldPurchaseDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPurchaseDateMouseClicked
-        MyCalendar calendar = new MyCalendar(fieldPurchaseDate);
-    }//GEN-LAST:event_fieldPurchaseDateMouseClicked
 
     private void fieldDueDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldDueDateMouseClicked
         MyCalendar calendar = new MyCalendar(fieldDueDate);
@@ -636,9 +627,14 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
         lblBtnAcept.setBackground(exitColor);
     }//GEN-LAST:event_lblBtnAceptMouseExited
 
+    private void fieldPurchaseDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fieldPurchaseDateMouseClicked
+        MyCalendar calendar = new MyCalendar(fieldPurchaseDate);
+    }//GEN-LAST:event_fieldPurchaseDateMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaDescription;
+    private javax.swing.JLabel btnLblBack;
     private javax.swing.JButton btnOk;
     private javax.swing.JComboBox<String> comBoxProvider;
     private javax.swing.JLabel errorLbl;
@@ -685,11 +681,13 @@ public class ProductRegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBtnAcept;
     private javax.swing.JLabel lblSalePercentage;
     private javax.swing.JLabel lblUnitCost;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel productsSubPanel;
+    private javax.swing.JPanel providerSubPanel;
     // End of variables declaration//GEN-END:variables
 }

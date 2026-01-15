@@ -7,11 +7,11 @@ import javax.swing.JLabel;
  *
  * @author EmanuelHurt
  */
-public class OptionsPurchasePanel extends javax.swing.JPanel {
+public class InputTypePanel extends javax.swing.JPanel {
 
     private Color enterColor;
     
-    public OptionsPurchasePanel() {
+    public InputTypePanel() {
         initComponents();
         enterColor = new Color(204,204,204);
     }
@@ -46,6 +46,7 @@ public class OptionsPurchasePanel extends javax.swing.JPanel {
         lblBtnRestock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconRestock.png"))); // NOI18N
         lblBtnRestock.setText("Reposición de Producto");
         lblBtnRestock.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        lblBtnRestock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnRestock.setOpaque(true);
         lblBtnRestock.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -70,6 +71,7 @@ public class OptionsPurchasePanel extends javax.swing.JPanel {
         lblBtnNewProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconNewProduct.png"))); // NOI18N
         lblBtnNewProduct.setText("Nuevo Producto");
         lblBtnNewProduct.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)));
+        lblBtnNewProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnNewProduct.setOpaque(true);
         lblBtnNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

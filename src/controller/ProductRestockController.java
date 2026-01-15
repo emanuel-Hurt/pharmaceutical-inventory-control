@@ -7,7 +7,9 @@ import javax.swing.table.DefaultTableModel;
 import model.Product;
 import model.daos.ProductDAO;
 import view.InitialWindow;
-import view.ProductRestockPanel;
+import view.InputTypePanel;
+import view.ProductRegistrationPanel;
+import view.SelectRestockPanel;
 import view.QuestionModal;
 
 /**
@@ -17,7 +19,7 @@ import view.QuestionModal;
 public class ProductRestockController {
     
     private InitialWindow iniWindow;
-    private ProductRestockPanel productRestockPanel;
+    private SelectRestockPanel productRestockPanel;
     private ProductDAO productDAO;
     private PurchaseController purchaseController;
     
@@ -28,7 +30,7 @@ public class ProductRestockController {
     }
     
     //COLOCADO DEL PANEL QUE CONTIENE LA TABLA PARA LA SELECCION DEL PRODUCTO A REPONER
-    public void setProductRestockPanel(ProductRestockPanel restockPanel) {
+    public void setProductRestockPanel(SelectRestockPanel restockPanel) {
         this.productRestockPanel = restockPanel;
         //PONER A LA ESCUCHA LOS ELEMENTOS DEL PANEL
         this.productRestockPanel.getLblBtnSearch().addMouseListener(new MouseAdapter() {
@@ -44,8 +46,7 @@ public class ProductRestockController {
             }
         });
         
-        //LLENAR LA TABLA DE PRODUCTOS
-        
+        //LLENAR LA TABLA DE PRODUCTOS       
         DefaultTableModel modelProductsTable = (DefaultTableModel)this.productRestockPanel.getTableProducts().getModel();
         
         ArrayList<Product> productsList = (ArrayList<Product>)productDAO.listById();
@@ -69,6 +70,15 @@ public class ProductRestockController {
             
             cont++;
         }
+        
+        //FUNCIONALIDAD DEL BOTON "ATRÁS"
+        this.productRestockPanel.getBtnLblBack().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                InputTypePanel inputTypePanel = new InputTypePanel();
+                purchaseController.setOptionsPurchasePanel(inputTypePanel);
+                iniWindow.changeCenterPanel(inputTypePanel);
+            }
+        });
     }
     
     private void makeSearch() {

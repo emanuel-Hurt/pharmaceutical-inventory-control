@@ -1,7 +1,6 @@
 package controller;
 
 import model.daos.PurchaseDAO;
-import view.ProductRegisterPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.DefaultComboBoxModel;
@@ -10,8 +9,9 @@ import model.daos.PercentageDAO;
 import model.daos.ProductDAO;
 import model.daos.ProviderDAO;
 import view.InitialWindow;
-import view.OptionsPurchasePanel;
-import view.ProductRestockPanel;
+import view.InputTypePanel;
+import view.ProductRegistrationPanel;
+import view.SelectRestockPanel;
 /**
  *
  * @author EmanuelHurt
@@ -23,10 +23,10 @@ public class PurchaseController extends MouseAdapter {
     private final PercentageDAO percentageDAO;
     private final PurchaseDAO purchaseDAO;
     
-    private OptionsPurchasePanel optionsPurchasePanel; //su vista principal
+    private InputTypePanel inputTypePanel; //su vista principal
     
     private ProductRestockController productRestockController;
-    private ProductRegisterController productRegisterController;
+    private ProductRegisterController productRegistrationController;
     
     private final InitialWindow iniWindow;
     
@@ -38,13 +38,13 @@ public class PurchaseController extends MouseAdapter {
         this.iniWindow = iniWindow;
         
         productRestockController = new ProductRestockController(productDAO, iniWindow, this);
-        productRegisterController = new ProductRegisterController(providerDAO, this.productDAO, percentageDAO, this.purchaseDAO);
+        productRegistrationController = new ProductRegisterController(providerDAO, this.productDAO, percentageDAO, this.purchaseDAO, this.iniWindow);
     }
-    //COLOCADO DEL PANEL PARA LA ELECCION DEL TIPO DE REGISTRO QUE SE VA A HACER
-    public void setOptionsPurchasePanel(OptionsPurchasePanel optionsPurchasePanel) {
-        this.optionsPurchasePanel = optionsPurchasePanel;
-        this.optionsPurchasePanel.getLblBtnRestock().addMouseListener(this);
-        this.optionsPurchasePanel.getLblBtnNewProduct().addMouseListener(this);
+    //ACTIVA LOS ELEMENTOS DEL PANEL
+    public void setOptionsPurchasePanel(InputTypePanel optionsPanel) {
+        this.inputTypePanel = optionsPanel;
+        this.inputTypePanel.getLblBtnRestock().addMouseListener(this);
+        this.inputTypePanel.getLblBtnNewProduct().addMouseListener(this);
         
     }
 
@@ -53,32 +53,32 @@ public class PurchaseController extends MouseAdapter {
         
         Object eventSource = e.getSource();
         //CONTROLA EL PANEL DE SELECCION DE RESTOCK O NUEVO PRODUCTO
-        if (optionsPurchasePanel != null) {
+        if (inputTypePanel != null) {
             //HABILITAMOS EL PANEL REGISTRAR NUEVO PRODUCTO
-            if (eventSource.equals(optionsPurchasePanel.getLblBtnNewProduct())) {
-                ProductRegisterPanel productRegisterPanel = new ProductRegisterPanel(false);
-                productRegisterController.setProductRegisterPanel(productRegisterPanel, true);
+            if (eventSource.equals(inputTypePanel.getLblBtnNewProduct())) {
+                ProductRegistrationPanel productRegisterPanel = new ProductRegistrationPanel(false, this.inputTypePanel);
+                productRegistrationController.setProductRegisterPanel(productRegisterPanel, true);
                 iniWindow.changeCenterPanel(productRegisterPanel);
                 //LLEVAR LOS DEMAS PANELES A NULL
-                optionsPurchasePanel = null;
+                inputTypePanel = null;
             }
-            //HABILITAMOS EL PANEL REGISTRAR RESTOCK
-            else if (eventSource.equals(optionsPurchasePanel.getLblBtnRestock())) {
+            //HABILITAMOS EL PANEL PARA SELECCIONAR EL PRODUCTO RESTOCK
+            else if (eventSource.equals(inputTypePanel.getLblBtnRestock())) {
                 //crear panel para buscar el producto a reponer
-                ProductRestockPanel restockPanel = new ProductRestockPanel();
+                SelectRestockPanel restockPanel = new SelectRestockPanel();
                 productRestockController.setProductRestockPanel(restockPanel);
                 iniWindow.changeCenterPanel(restockPanel);
                 //DESHABILITAR LOS OTROS DOS PANELES
-                optionsPurchasePanel = null;
+                inputTypePanel = null;
             }
         }
     }
     
-    //METODO LLAMADO DESDE EL CONTROLADOR DE RESTOCK
+    //METODO LLAMADO DESDE productRestockController, MUESTRA EL PANEL DE REGISTRO DE PRODUCTO
     public void productRestockRegisterPanel(DefaultTableModel tableModel, int iRow) {
-        ProductRegisterPanel productRegisterPanel = new ProductRegisterPanel(true);
+        ProductRegistrationPanel productRegisterPanel = new ProductRegistrationPanel(true, new SelectRestockPanel());
         //PONE TODOS LOS ELEMENTOS DE ESTE PANEL A LA ESCUCHA
-        productRegisterController.setProductRegisterPanel(productRegisterPanel, false);
+        productRegistrationController.setProductRegisterPanel(productRegisterPanel, false);
         //LLENA LOS CAMPOS DEL PANEL CON LOS DATOS DEL PRODUCTO SELECCIONADO
         productRegisterPanel.getFieldProductName().setText(tableModel.getValueAt(iRow, 2)+"");
         productRegisterPanel.getFieldGenericName().setText(tableModel.getValueAt(iRow, 3)+"");

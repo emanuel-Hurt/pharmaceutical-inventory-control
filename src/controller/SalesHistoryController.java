@@ -11,7 +11,7 @@ import model.SaleDetail;
 import model.daos.*;
 import view.ErrorModal;
 import view.QuestionModal;
-import view.SaleDetailModal;
+import view.SaleHistoryModal;
 import view.SalesHistoryPanel;
 import view.SuccessModal;
 /**
@@ -76,7 +76,7 @@ public class SalesHistoryController {
     private void showSaleDetailModal(int row) {
         int idSaleDetail = salesDetailsList.get(row).getIdSaleDetail();
         ArrayList<ProductSale> productSaleList = (ArrayList)productSaleDAO.productSaleListByIdSaleDetail(idSaleDetail);
-        SaleDetailModal saleDetailModal = new SaleDetailModal();
+        SaleHistoryModal saleDetailModal = new SaleHistoryModal();
         DefaultTableModel model = (DefaultTableModel)saleDetailModal.getTblSaleDetail().getModel();
         for (ProductSale productSale : productSaleList) {
             //proveedor, producto, forma, unidades, monto

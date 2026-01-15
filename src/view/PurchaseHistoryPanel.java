@@ -11,9 +11,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author EmanuelHurt
  */
-public class EntradasPanel extends javax.swing.JPanel {
+public class PurchaseHistoryPanel extends javax.swing.JPanel {
 
-    public EntradasPanel() {
+    public PurchaseHistoryPanel() {
         initComponents();
     }
 

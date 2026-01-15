@@ -17,9 +17,9 @@ import model.daos.ProductDAO;
 import model.daos.ProductSaleDAO;
 import view.ErrorModal;
 import view.InitialWindow;
-import view.SaleDetailPanel;
+import view.SaleDetailModal;
+import view.SaleModal;
 import view.SalePanel;
-import view.SearchProductPanel;
 import view.SuccessfullSaleModal;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
@@ -41,8 +41,8 @@ import model.daos.SaleDetailDAO;
 public class ProductSaleController extends MouseAdapter {
     
     private final InitialWindow iniWindow;
-    private SearchProductPanel searchProductPanel;
-    private SaleDetailPanel saleDetailPanel;
+    private SalePanel searchProductPanel;
+    private SaleDetailModal saleDetailPanel;
     
     private SaleListController saleListController;
     
@@ -77,7 +77,7 @@ public class ProductSaleController extends MouseAdapter {
         return productsSaleList;
     }
     
-    public void setSearchProductPanel(SearchProductPanel searchPanel) {
+    public void setSearchProductPanel(SalePanel searchPanel) {
         searchProductPanel = searchPanel;
         
         totalAmount = 0.0;
@@ -139,7 +139,7 @@ public class ProductSaleController extends MouseAdapter {
                 
                 if (searchProductPanel.getProductsSaleListPanel().getComponentCount() > 0) {
                     //CREAR MODAL PARA DETALLE DE VENTA SaleDetail
-                    this.saleDetailPanel = new SaleDetailPanel(this,totalAmount);
+                    this.saleDetailPanel = new SaleDetailModal(this,totalAmount);
                     saleDetailPanel.setModalFrame();//muestra el panel en un modal
                 } else {
                     ErrorModal erroModal = new ErrorModal("Debe seleccionar productos para la venta");
@@ -172,7 +172,7 @@ public class ProductSaleController extends MouseAdapter {
                     double discountPercentage = percentage.getDiscountPercentage();
 
                     //LOS ENVIA AL PANEL DE VENTA DEL PRODUCTO salePanel
-                    SalePanel salePanel = new SalePanel(discountPercentage,product, this);
+                    SaleModal salePanel = new SaleModal(discountPercentage,product, this);
                     
                 } else {
                     ErrorModal modal = new ErrorModal("El Producto ya se encuentra en la lista");

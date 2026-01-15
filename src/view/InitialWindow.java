@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -68,6 +67,7 @@ public class InitialWindow extends javax.swing.JFrame {
         centerPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1259, 650));
 
         majorPanel.setLayout(new java.awt.BorderLayout());
 
@@ -89,6 +89,7 @@ public class InitialWindow extends javax.swing.JFrame {
         jSeparator1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(217, 217, 217)));
 
         lblBtnCloseSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit-icon.png"))); // NOI18N
+        lblBtnCloseSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
@@ -135,6 +136,7 @@ public class InitialWindow extends javax.swing.JFrame {
         btnBuys.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBuys.setText("Agregar Producto");
         btnBuys.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        btnBuys.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuys.setIconTextGap(15);
         btnBuys.setOpaque(true);
         sidePanel.add(btnBuys, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 180, 30));
@@ -145,6 +147,7 @@ public class InitialWindow extends javax.swing.JFrame {
         btnProducts.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnProducts.setText("Productos");
         btnProducts.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        btnProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProducts.setIconTextGap(15);
         btnProducts.setOpaque(true);
         sidePanel.add(btnProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 180, 30));
@@ -155,6 +158,7 @@ public class InitialWindow extends javax.swing.JFrame {
         btnNewSale.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNewSale.setText("Realizar Venta");
         btnNewSale.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        btnNewSale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNewSale.setIconTextGap(15);
         btnNewSale.setOpaque(true);
         sidePanel.add(btnNewSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 180, 30));
@@ -165,6 +169,7 @@ public class InitialWindow extends javax.swing.JFrame {
         btnControlPanel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnControlPanel.setText("Panel de Control");
         btnControlPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        btnControlPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnControlPanel.setIconTextGap(15);
         btnControlPanel.setOpaque(true);
         sidePanel.add(btnControlPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 180, 30));
@@ -175,6 +180,7 @@ public class InitialWindow extends javax.swing.JFrame {
         lblBtnProviders.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBtnProviders.setText("Proveedores");
         lblBtnProviders.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        lblBtnProviders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnProviders.setIconTextGap(15);
         lblBtnProviders.setOpaque(true);
         sidePanel.add(lblBtnProviders, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 180, 30));
@@ -185,6 +191,7 @@ public class InitialWindow extends javax.swing.JFrame {
         lblBtnSettings.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBtnSettings.setText("Configuraciones");
         lblBtnSettings.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        lblBtnSettings.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnSettings.setIconTextGap(15);
         lblBtnSettings.setOpaque(true);
         sidePanel.add(lblBtnSettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 180, 30));
@@ -195,6 +202,7 @@ public class InitialWindow extends javax.swing.JFrame {
         lblBtnInputProducts.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBtnInputProducts.setText("Entradas de Producto");
         lblBtnInputProducts.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        lblBtnInputProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnInputProducts.setIconTextGap(15);
         lblBtnInputProducts.setOpaque(true);
         sidePanel.add(lblBtnInputProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 180, 30));
@@ -205,6 +213,7 @@ public class InitialWindow extends javax.swing.JFrame {
         lblBtnSalesHistory.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblBtnSalesHistory.setText("Salidas de Producto");
         lblBtnSalesHistory.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 15, 1, 1));
+        lblBtnSalesHistory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnSalesHistory.setIconTextGap(15);
         lblBtnSalesHistory.setOpaque(true);
         sidePanel.add(lblBtnSalesHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 180, 30));

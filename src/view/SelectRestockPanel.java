@@ -10,11 +10,11 @@ import javax.swing.JTextField;
  *
  * @author EmanuelHurt
  */
-public class ProductRestockPanel extends javax.swing.JPanel {
+public class SelectRestockPanel extends javax.swing.JPanel {
 
     private Color enterColor, exitColor;
     
-    public ProductRestockPanel() {
+    public SelectRestockPanel() {
         initComponents();
         enterColor = new Color(18,19,130);
         exitColor = new Color(26,115,182);
@@ -31,6 +31,10 @@ public class ProductRestockPanel extends javax.swing.JPanel {
     public JTable getTableProducts() {
         return tableProducts;
     }
+    
+    public JLabel getBtnLblBack() {
+        return this.btnLblBack;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,16 +44,15 @@ public class ProductRestockPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProducts = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         fieldNameProduct = new javax.swing.JTextField();
         lblBtnSearch = new javax.swing.JLabel();
+        btnLblBack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 244, 244));
-        setLayout(new java.awt.GridBagLayout());
 
         tableProducts.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         tableProducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -71,19 +74,6 @@ public class ProductRestockPanel extends javax.swing.JPanel {
         tableProducts.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableProducts);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 900;
-        gridBagConstraints.ipady = 363;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(28, 16, 18, 21);
-        add(jScrollPane1, gridBagConstraints);
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setOpaque(false);
 
@@ -96,6 +86,7 @@ public class ProductRestockPanel extends javax.swing.JPanel {
         lblBtnSearch.setForeground(new java.awt.Color(255, 255, 255));
         lblBtnSearch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBtnSearch.setText("Buscar");
+        lblBtnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnSearch.setOpaque(true);
         lblBtnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -111,30 +102,53 @@ public class ProductRestockPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(fieldNameProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblBtnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldNameProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBtnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(lblBtnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 228;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
-        add(jPanel1, gridBagConstraints);
+        btnLblBack.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnLblBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnLblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back-icon.png"))); // NOI18N
+        btnLblBack.setText("Atrás");
+        btnLblBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnLblBack)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnLblBack)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBtnSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnSearchMouseEntered
@@ -147,6 +161,7 @@ public class ProductRestockPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnLblBack;
     private javax.swing.JTextField fieldNameProduct;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

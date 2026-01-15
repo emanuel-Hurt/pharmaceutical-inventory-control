@@ -145,13 +145,13 @@ public class ProductController extends MouseAdapter {
                         String sDueDate = (String)modelProductsTable.getValueAt(nRow, 9);
                         Date dueDate = Date.valueOf(sDueDate);
                         
-                        String provider = (String)modelProductsTable.getValueAt(nRow, 2);
-                        int idProvider = providerDAO.readProvider(provider).getIdProvider();
+                        String providerName = (String)modelProductsTable.getValueAt(nRow, 2);
+                        int idProvider = providerDAO.readProvider(providerName).getIdProvider();
                         if (idProvider > 0) {
                             editRows.add(nRow);
                         } else {
                             editRows.remove(nRow);
-                            ErrorModal modal = new ErrorModal("Proveedor: "+provider+" es incorrecto.");
+                            ErrorModal modal = new ErrorModal("Proveedor: "+providerName+" es incorrecto.");
                         }
                         
                         
