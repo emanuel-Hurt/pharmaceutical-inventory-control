@@ -4,16 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/sisfarma/SisFarma.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/view/InitialWindow.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/view/InputTypePanel.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/view/ProductRegistrationPanel.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/InitialController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/PurchaseController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProductRestockController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProductRegisterController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/model/daos/UserDAO.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/AccessController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/model/FileConfig.java</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProductController.java</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProviderController.java</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/model/daos/ProductDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -26,12 +26,12 @@ public class ProviderController extends MouseAdapter {
     private final ProviderDAO providerDAO;
     private ProvidersPanel providersPanel;
     private JTable tableProviders;
-    private HashSet<Integer> editedRows;
+    //private HashSet<Integer> editedRows;
     private ArrayList<Provider> providersList;
     
     public ProviderController(ProviderDAO provDAO) {
         providerDAO = provDAO;
-        this.editedRows = new HashSet<>();
+        //this.editedRows = new HashSet<>();
         this.providersList = (ArrayList<Provider>)providerDAO.providersList();
     }
     

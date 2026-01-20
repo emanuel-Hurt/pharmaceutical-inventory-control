@@ -37,6 +37,7 @@ import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -54,7 +55,7 @@ public class ProductController extends MouseAdapter {
     private final PercentageDAO percentageDAO;
     
     private HashSet<Integer> editRows;
-    
+    private ArrayList<Product> productsList;
     private String nameToExportFile;
     
     public ProductController(ProductDAO productDAO, ProviderDAO proviDAO, PercentageDAO percenDAO) {
@@ -63,6 +64,7 @@ public class ProductController extends MouseAdapter {
         percentageDAO = percenDAO;
         nameToExportFile = "";
         editRows = new HashSet<>();
+        productsList = (ArrayList) this.productDAO.alphabeticalList();
     }
     
     public void setProductsPanel(ProductsPanel productsPanel) {
@@ -79,24 +81,8 @@ public class ProductController extends MouseAdapter {
         showProducts("byId");
         putTableListening();
     }
-    //LLENA LA TABLA byID POR DEFECTO
+    //LLENA LA TABLA EN ORDEN ALFABÉTICO
     private void showProducts(String typeOfSort) {
-        
-        ArrayList<Product> products = null;
-        //OBTENER LOS DATOS
-        switch(typeOfSort){
-            case "byId":
-                products = (ArrayList)productDAO.listById();
-                break;
-            case "byAlphabetical":
-                products = (ArrayList)productDAO.alphabeticalList();
-                break;
-            case "byPrice":
-                products = (ArrayList)productDAO.listByPrice();
-                break;
-            default:
-                products = (ArrayList)productDAO.listById();
-        }
         //VACIAR LA TABLA PREVIAMENTE
         DefaultTableModel modelProductsTable = (DefaultTableModel)productsPanel.getProductsTable().getModel();
         if (modelProductsTable.getRowCount() > 0) {
@@ -108,8 +94,8 @@ public class ProductController extends MouseAdapter {
         double price;
         int existence;
         int n = 1;
-        for (Product product : products) {
-            
+        
+        for (Product product : this.productsList) {          
             idProduct = product.getIdProduct();
             codProd = product.getCodProduct();
             nameProduct = product.getNameProduct();
@@ -381,39 +367,30 @@ public class ProductController extends MouseAdapter {
     }
     
     private void makeSearch() {
-        String nameProd = productsPanel.getTxtFieldNameProduct().getText();
-        if (!nameProd.isEmpty()) {
-            ArrayList<Product> products = (ArrayList)productDAO.listByNameProduct(nameProd);
-            if (products.size() > 0) {
-                DefaultTableModel model = (DefaultTableModel)productsPanel.getProductsTable().getModel();
-                if (model.getRowCount() > 0) {
-                    model.setRowCount(0);
-                }
-
-                int n = 1;
-
-                for (Product product : products) {
-                    String row[] = {
-                        n+"",
-                        product.getCodProduct(),
-                        product.getNameProvider(),
-                        product.getNameProduct(),
-                        product.getGenericName(),
-                        product.getPharmaForm(),
-                        product.getConcentration(),
-                        product.getPrice()+"",
-                        product.getExistence()+"",
-                        product.getDueDate().toString()
-                    };
-
-                    model.addRow(row);
-                }
+        String searchedName = productsPanel.getTxtFieldNameProduct().getText();
+        if (!searchedName.isEmpty()) {
+            searchedName = searchedName.trim();
+            searchedName = searchedName.toUpperCase();
+            //ArrayList<Product> products = (ArrayList)productDAO.listByNameProduct(searchedName);
+            List<Integer> indexes = matchName(searchedName);
+            if (indexes.size() > 0) {
+                JTable table = this.productsPanel.getProductsTable();
+                table.setRowSelectionInterval(indexes.get(0), indexes.get(indexes.size()-1));
+                table.scrollRectToVisible(table.getCellRect(indexes.get(0), 0, true));
             } else {
-                QuestionModal modal = new QuestionModal("Sin coincidencias para "+nameProd+" en los registros.");
+                QuestionModal modal = new QuestionModal("Sin coincidencias para "+searchedName+" en los registros.");
             }
             
         } else {
             QuestionModal modal = new QuestionModal("Ingrese nombre para la búsqueda.");
         }
+    }
+    
+    private List<Integer> matchName(String searchedName) {
+        
+        return this.productsList.stream()
+                .filter(product -> product.getNameProduct().contains(searchedName))
+                .map(productSelect -> productsList.indexOf(productSelect))
+                .toList();               
     }
 }
