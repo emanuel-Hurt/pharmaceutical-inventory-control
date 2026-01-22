@@ -53,12 +53,12 @@ public class ProviderController extends MouseAdapter {
                     String nameProvider = (String)tableModel.getValueAt(nRow, 1);
                    
                     int phone = Integer.parseInt(strPhone);
-
+                    //ACTUALIZAR EL PROVEEDOR EN EL ARRAYLIST
                     Provider provider = providersList.get(nRow);
                     provider.setName(nameProvider);
                     provider.setEmail(email);
                     provider.setPhone(phone);
-
+                    //ACTUALIZAR EL PROVEEDOR EN LA BBDD
                     providerDAO.updateProvider(provider);
                                       
                 } else {

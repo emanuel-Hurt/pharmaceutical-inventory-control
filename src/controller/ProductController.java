@@ -1,8 +1,6 @@
 package controller;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -18,13 +16,10 @@ import model.daos.ProductDAO;
 import view.ErrorModal;
 import view.ProductsPanel;
 import java.sql.Date;
-import model.Provider;
 import model.daos.ProviderDAO;
 import view.SuccessModal;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashSet;
 import javax.swing.JFileChooser;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -38,8 +33,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import view.NameFileModal;
 /**
@@ -54,7 +47,6 @@ public class ProductController extends MouseAdapter {
     private ProviderDAO providerDAO;
     private final PercentageDAO percentageDAO;
     
-    private HashSet<Integer> editRows;
     private ArrayList<Product> productsList;
     private String nameToExportFile;
     
@@ -63,26 +55,42 @@ public class ProductController extends MouseAdapter {
         this.providerDAO = proviDAO;
         percentageDAO = percenDAO;
         nameToExportFile = "";
-        editRows = new HashSet<>();
         productsList = (ArrayList) this.productDAO.alphabeticalList();
     }
     
     public void setProductsPanel(ProductsPanel productsPanel) {
         this.productsPanel = productsPanel;
-        //productsPanel.getComBoxOrden().addActionListener(this);
-        productsPanel.getLblBtnSave().addMouseListener(this);
-        productsPanel.getLblBtnExport().addMouseListener(this);
-        productsPanel.getLblBtnDetails().addMouseListener(this);
+        
+        productsPanel.getLblBtnExport().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                String path = getFilePath();
+                if (path.length() > 0) {
+
+                    try {
+                        NameFileModal nameModal = new NameFileModal(ProductController.this);
+                        if (nameToExportFile != "") {
+                            exportToExcel(path);
+                            SuccessModal modal = new SuccessModal("Archivo exportado exitosamente");
+                            nameToExportFile = "";
+                        }
+                    } catch (IOException ex) {
+                        System.out.println(ex.getMessage());
+                        ErrorModal modal = new ErrorModal("Error al exportar el archivo");
+                    }
+                }
+            }
+        });
+        
         productsPanel.getLblBtnSearch().addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 makeSearch();
             }
         });
-        showProducts("byId");
+        showProducts();
         putTableListening();
     }
     //LLENA LA TABLA EN ORDEN ALFABÉTICO
-    private void showProducts(String typeOfSort) {
+    private void showProducts() {
         //VACIAR LA TABLA PREVIAMENTE
         DefaultTableModel modelProductsTable = (DefaultTableModel)productsPanel.getProductsTable().getModel();
         if (modelProductsTable.getRowCount() > 0) {
@@ -134,68 +142,47 @@ public class ProductController extends MouseAdapter {
                         String providerName = (String)modelProductsTable.getValueAt(nRow, 2);
                         int idProvider = providerDAO.readProvider(providerName).getIdProvider();
                         if (idProvider > 0) {
-                            editRows.add(nRow);
+                            //SE DEBEN ACTUALIZAR LOS DATOS
+                            //String cod = (String)modelProductsTable.getValueAt(nRow, 1);
+                            String productName = (String)modelProductsTable.getValueAt(nRow, 3);
+                            String genericName = (String)modelProductsTable.getValueAt(nRow, 4);
+                            String pharmaForm = (String)modelProductsTable.getValueAt(nRow, 5);
+                            String concentration = (String)modelProductsTable.getValueAt(nRow, 6);
+                            //ACTUALIZAR PRODUCTO EN EL ARRAYLIST
+                            Product product = productsList.get(nRow);
+                            product.setNameProduct(productName);
+                            product.setNameProvider(providerName);
+                            product.setIdProvider(idProvider);
+                            product.setGenericName(genericName);
+                            product.setPharmaForm(pharmaForm);
+                            product.setConcentration(concentration);
+                            product.setDueDate(dueDate);
+                            product.setPrice(price);
+                            product.setExistence(existence);
+                            //ACTUALIZAR EN LA BBDD
+                            productDAO.updateProduct(product);
+                            
                         } else {
-                            editRows.remove(nRow);
                             ErrorModal modal = new ErrorModal("Proveedor: "+providerName+" es incorrecto.");
                         }
                         
                         
                     }catch(NumberFormatException ex) {
-                        editRows.remove(nRow);
                         ErrorModal modal = new ErrorModal("Ingrese valores numéricos en los campos de cantidad.");
                     }
                     catch(IllegalArgumentException ex) {
-                        editRows.remove(nRow);
                         ErrorModal modal = new ErrorModal("La Fecha debe mantener el formato AAAA-MM-DD");
                     }
                 }
             }
         });
     }
-
-    //RESPONDE AL BOTON DE GUARDAR CAMBIOS REALIZADOS
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        JLabel source = (JLabel)e.getSource();
-        if (productsPanel != null) {
-            if (productsPanel.getLblBtnSave().equals(source)) {
-                saveUpdateProducts();
-            }
-            else if (productsPanel.getLblBtnDetails().equals(source)) {
-                showDetailsModal();
-            }
-            else if (productsPanel.getLblBtnExport().equals(source)) {
-                String path = getFilePath();
-                if (path.length() > 0) {
-                    
-                    try {
-                        NameFileModal nameModal = new NameFileModal(this);
-                        if (nameToExportFile != "") {
-                            exportToExcel(path);
-                            SuccessModal modal = new SuccessModal("Archivo exportado exitosamente");
-                            nameToExportFile = "";
-                        }
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                        ErrorModal modal = new ErrorModal("Error al exportar el archivo");
-                    }
-                }
-                
-            }
-        }
-    }
     
     @Override
     public void mouseEntered(MouseEvent e) {
         JLabel source = (JLabel)e.getSource();
-        if (source.equals(productsPanel.getLblBtnSave())) {
-            productsPanel.getLblBtnSave().setBackground(new Color(127, 179, 213));
-        }
-        else if (source.equals(productsPanel.getLblBtnDetails())) {
-            productsPanel.getLblBtnDetails().setBackground(new Color(127, 179, 213));
-        }
-        else if (source.equals(productsPanel.getLblBtnExport())) {
+        
+        if (source.equals(productsPanel.getLblBtnExport())) {
             productsPanel.getLblBtnExport().setBackground(new Color(127,179,213));
         }
     }
@@ -203,69 +190,12 @@ public class ProductController extends MouseAdapter {
     @Override
     public void mouseExited(MouseEvent e) {
         JLabel source = (JLabel)e.getSource();
-        if (source.equals(productsPanel.getLblBtnSave())) {
-            productsPanel.getLblBtnSave().setBackground(Color.WHITE);
-        }
-        else if (source.equals(productsPanel.getLblBtnDetails())) {
-            productsPanel.getLblBtnDetails().setBackground(Color.WHITE);
-        }
-        else if (source.equals(productsPanel.getLblBtnExport())) {
+        
+        if (source.equals(productsPanel.getLblBtnExport())) {
             productsPanel.getLblBtnExport().setBackground(Color.WHITE);
         }
     }
     
-    //LLAMADO DESDE EL MOUSE CLICKED CUANDO SE DA A lblBtnSave
-    public void saveUpdateProducts() {
-        
-        if (!editRows.isEmpty()) {
-
-            DefaultTableModel model = (DefaultTableModel)productsPanel.getProductsTable().getModel();
-            
-            for (Integer nRow : editRows) {
-                String codProd = (String)model.getValueAt(nRow, 1);
-                String provider = (String)model.getValueAt(nRow, 2);
-                String nameProduct = (String)model.getValueAt(nRow, 3);
-                String genericName = (String)model.getValueAt(nRow,4);
-                String pharmaForm = (String)model.getValueAt(nRow, 5);
-                String concentration = (String)model.getValueAt(nRow, 6);
-                
-                String sPriceU = (String)model.getValueAt(nRow, 7);
-                double price = Double.parseDouble(sPriceU);
-                
-                String strExistence = (String)model.getValueAt(nRow, 8);
-                int existence = Integer.parseInt(strExistence);
-                
-                String sDueDate = (String)model.getValueAt(nRow, 9);
-                Date dueDate = Date.valueOf(sDueDate);
-
-                Product product = new Product();
-                product.setNameProduct(nameProduct);
-                product.setPharmaForm(pharmaForm);
-                product.setConcentration(concentration);
-                product.setPrice(price);
-                product.setCodProduct(codProd);
-                product.setGenericName(genericName);
-                product.setNameProvider(provider);
-                //OBTENCION DEL ID PROVEEDOR
-                int idProvider = providerDAO.readProvider(provider).getIdProvider();
-                product.setIdProvider(idProvider);
-
-                product.setExistence(existence);
-                product.setDueDate(dueDate);
-
-                productDAO.updateProduct(product);
-
-            }
-            editRows.clear();
-            SuccessModal successModal = new SuccessModal("Datos Actualizados.");
-            //VOLVER A CARGAR LA TABLA
-            showProducts("byId");
-
-        } else {
-            QuestionModal modal = new QuestionModal("Debe editar una fila para luego guardar los cambios.");
-        }
-    }
-
     public void showDetailsModal() {
         DefaultTableModel model = (DefaultTableModel)productsPanel.getProductsTable().getModel();
         //7 (precio u) y 8 (saldo)

@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/sisfarma/SisFarma.java</file>
             <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProductController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/ProviderController.java</file>
-            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/model/daos/ProductDAO.java</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/view/ProductsPanel.java</file>
+            <file>file:/C:/Users/Leo/Documents/NetBeansProjects/SisFarma/src/controller/InitialController.java</file>
         </group>
     </open-files>
 </project-private>

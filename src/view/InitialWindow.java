@@ -1,19 +1,24 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  *
  * @author EmanuelHurt
  */
 public class InitialWindow extends javax.swing.JFrame {
-    
+     
     public InitialWindow() {       
         
         initComponents();
         this.lblBtnCloseSesion.setToolTipText("Cerrar Sesión");
+        Border emptyBorder = BorderFactory.createEmptyBorder(2, 2, 2, 2);
+        this.lblBtnCloseSesion.setBorder(emptyBorder);
         //putHoverEffectSideButtons();
     }
     
@@ -90,6 +95,15 @@ public class InitialWindow extends javax.swing.JFrame {
 
         lblBtnCloseSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit-icon.png"))); // NOI18N
         lblBtnCloseSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBtnCloseSesion.setOpaque(true);
+        lblBtnCloseSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBtnCloseSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBtnCloseSesionMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
         headPanel.setLayout(headPanelLayout);
@@ -246,6 +260,15 @@ public class InitialWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblBtnCloseSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCloseSesionMouseEntered
+        Border border = BorderFactory.createLineBorder(new Color(180, 180, 180), 2);
+        this.lblBtnCloseSesion.setBorder(border);
+    }//GEN-LAST:event_lblBtnCloseSesionMouseEntered
+
+    private void lblBtnCloseSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnCloseSesionMouseExited
+        this.lblBtnCloseSesion.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
+    }//GEN-LAST:event_lblBtnCloseSesionMouseExited
 
     public JLabel getLblBtnControlPanel() {
         return btnControlPanel;

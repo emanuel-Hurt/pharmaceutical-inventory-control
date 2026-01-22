@@ -27,28 +27,26 @@ public class ProductsPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
         lblBtnSearch = new javax.swing.JLabel();
-        lblBtnSave = new javax.swing.JLabel();
-        lblBtnDetails = new javax.swing.JLabel();
-        lblBtnExport = new javax.swing.JLabel();
         txtFieldNameProduct = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         productsTable = new javax.swing.JTable();
+        lblBtnExport = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(244, 244, 244));
-        setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setOpaque(false);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblBtnSearch.setBackground(new java.awt.Color(26, 115, 182));
         lblBtnSearch.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblBtnSearch.setForeground(new java.awt.Color(255, 255, 255));
         lblBtnSearch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBtnSearch.setText("Buscar");
+        lblBtnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblBtnSearch.setOpaque(true);
         lblBtnSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -58,75 +56,12 @@ public class ProductsPanel extends javax.swing.JPanel {
                 lblBtnSearchMouseExited(evt);
             }
         });
-
-        lblBtnSave.setBackground(new java.awt.Color(255, 255, 255));
-        lblBtnSave.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnSave.setForeground(new java.awt.Color(51, 51, 51));
-        lblBtnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconSave.png"))); // NOI18N
-        lblBtnSave.setText("Guardar");
-        lblBtnSave.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        lblBtnSave.setOpaque(true);
-
-        lblBtnDetails.setBackground(new java.awt.Color(255, 255, 255));
-        lblBtnDetails.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnDetails.setForeground(new java.awt.Color(51, 51, 51));
-        lblBtnDetails.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnDetails.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconDetails.png"))); // NOI18N
-        lblBtnDetails.setText("Detalles");
-        lblBtnDetails.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 51, 51)));
-        lblBtnDetails.setOpaque(true);
-
-        lblBtnExport.setBackground(new java.awt.Color(255, 255, 255));
-        lblBtnExport.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblBtnExport.setForeground(new java.awt.Color(51, 51, 51));
-        lblBtnExport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBtnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/export-icon.png"))); // NOI18N
-        lblBtnExport.setText("Exportar");
-        lblBtnExport.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
-        lblBtnExport.setOpaque(true);
+        jPanel1.add(lblBtnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 10, 55, 32));
 
         txtFieldNameProduct.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txtFieldNameProduct.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 204, 204)), javax.swing.BorderFactory.createEmptyBorder(1, 10, 1, 1)));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFieldNameProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblBtnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153)
-                .addComponent(lblBtnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblBtnDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblBtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBtnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBtnDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblBtnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldNameProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 276;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(15, 21, 0, 18);
-        add(jPanel1, gridBagConstraints);
+        txtFieldNameProduct.setMaximumSize(new java.awt.Dimension(64, 21));
+        jPanel1.add(txtFieldNameProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 11, 367, 32));
 
         productsTable.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         productsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,17 +83,39 @@ public class ProductsPanel extends javax.swing.JPanel {
         productsTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(productsTable);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 875;
-        gridBagConstraints.ipady = 366;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(30, 21, 28, 18);
-        add(jScrollPane1, gridBagConstraints);
+        lblBtnExport.setBackground(new java.awt.Color(255, 255, 255));
+        lblBtnExport.setForeground(new java.awt.Color(51, 51, 51));
+        lblBtnExport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBtnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconExport.png"))); // NOI18N
+        lblBtnExport.setText("Exportar");
+        lblBtnExport.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
+        lblBtnExport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblBtnExport.setOpaque(true);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                        .addComponent(lblBtnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBtnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblBtnSearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBtnSearchMouseEntered
@@ -172,15 +129,7 @@ public class ProductsPanel extends javax.swing.JPanel {
     public JTable getProductsTable() {
         return productsTable;
     }
-
-    public JLabel getLblBtnSave() {
-        return lblBtnSave;
-    }
-    
-    public JLabel getLblBtnDetails() {
-        return lblBtnDetails;
-    }
-    
+     
     public JLabel getLblBtnExport() {
         return lblBtnExport;
     }
@@ -196,9 +145,7 @@ public class ProductsPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblBtnDetails;
     private javax.swing.JLabel lblBtnExport;
-    private javax.swing.JLabel lblBtnSave;
     private javax.swing.JLabel lblBtnSearch;
     private javax.swing.JTable productsTable;
     private javax.swing.JTextField txtFieldNameProduct;
